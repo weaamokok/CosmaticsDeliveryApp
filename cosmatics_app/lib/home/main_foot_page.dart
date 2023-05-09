@@ -15,10 +15,10 @@ class _MainCosmaticPageState extends State<MainCosmaticPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: blueush,
+      backgroundColor: Colors.white,
       body: Column(
         children: [
-          Container(
+          Container(//header
             child: Container(
               margin: EdgeInsets.only(top: 45, bottom: 15),
               padding: EdgeInsets.symmetric(horizontal: 20),
@@ -29,14 +29,17 @@ class _MainCosmaticPageState extends State<MainCosmaticPage> {
                     children: [
                       Column(
                         children: [
-                          Row(
-                            children: [
-                              BigText(
-                                  text: "طرابلس", color: black.withOpacity(.8)),
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.arrow_drop_down_outlined))
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.only(left:20.0),
+                            child: Row(
+                              children: [
+                                BigText(
+                                    text: "طرابلس", color: black.withOpacity(.8)),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(Icons.arrow_drop_down_outlined))
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -44,12 +47,12 @@ class _MainCosmaticPageState extends State<MainCosmaticPage> {
                         width: 45,
                         height: 45,
                         child: IconButton(
-                          icon: Icon(Icons.search_sharp),
+                          icon: Icon(Icons.search_sharp,color: Colors.white,),
                           onPressed: () {},
                         ),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
-                            color: Colors.white),
+                            color: blueush),
                       )
                     ],
                   ),
@@ -57,7 +60,7 @@ class _MainCosmaticPageState extends State<MainCosmaticPage> {
               ),
             ),
           ),
-          CosmaticsPageBody()
+          CosmaticsPageBody()//body
         ],
       ),
     );
