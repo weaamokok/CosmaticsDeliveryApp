@@ -1,4 +1,5 @@
 import 'package:cosmatics_app/utils/colors.dart';
+import 'package:cosmatics_app/utils/dimentions.dart';
 import 'package:cosmatics_app/widgets/big_text.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
   PageController pageController = PageController(viewportFraction: .85);
   var _currentPageValue = 0.0;
   double _scaleFactor = 0.8; //is used to controll the scale
-  double _height = 220; //height of the container
+  double _height = Dimensions.pageViewContainer; //height of the container
   @override
   void initState() {
     super.initState();
@@ -38,13 +39,13 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
     return Column(
       children: [
         Container(
-          height: 320,
+          height: Dimensions.pageView,
           child: PageView.builder(
             controller: pageController,
             itemCount: 5,
             itemBuilder: (context, index) => _buildPageItem(index),
           ),
-        ), DotsIndicator(
+        ),SizedBox(height: Dimensions.height20,), DotsIndicator(
   dotsCount: 5,
   position:_currentPageValue.round(),
   decorator: DotsDecorator(
@@ -99,8 +100,8 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
       child: Stack(
         children: [
           Container(
-            height: 220,
-            margin: EdgeInsets.only(left: 5, right: 5),
+            height: Dimensions.pageViewContainer,
+            margin: EdgeInsets.only(left: Dimensions.height10, right: Dimensions.height10),
             child: Container(),
             decoration: BoxDecoration(
                 image: DecorationImage(
@@ -113,10 +114,10 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                height: 150,
-                margin: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                height: Dimensions.pageViewTextContainer,
+                margin: EdgeInsets.symmetric(horizontal: 25, vertical: Dimensions.height10),
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  padding: EdgeInsets.symmetric(horizontal: Dimensions.height20, vertical: 15),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -125,7 +126,7 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                           size: 17,
                         ),
                         SizedBox(
-                          height: 10,
+                          height:Dimensions.height10,
                         ),
                         Row(
                           children: [
@@ -136,11 +137,11 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                                         Icons.star,
                                         color:
                                             Color.fromARGB(255, 226, 226, 36),
-                                        size: 15,
+                                        size: Dimensions.iconSize24,
                                       )),
                             ),
                             SizedBox(
-                              width: 10,
+                              width: Dimensions.height10,
                             ),
                             BigText(
                               text: '4.5',
@@ -148,7 +149,7 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                               color: black.withOpacity(.7),
                             ),
                             SizedBox(
-                              width: 10,
+                              width: Dimensions.width10,
                             ),
                             BigText(
                               text: '12',
@@ -156,7 +157,7 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                               color: black.withOpacity(.7),
                             ),
                             SizedBox(
-                              width: 10,
+                              width:  Dimensions.width10,
                             ),
                             BigText(
                               text: 'تعليق',
@@ -166,7 +167,7 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                           ],
                         ),
                         SizedBox(
-                          height: 20,
+                          height: Dimensions.height20,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

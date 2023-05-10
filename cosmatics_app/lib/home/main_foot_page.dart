@@ -1,5 +1,6 @@
 import 'package:cosmatics_app/home/Cosmatics_page_body.dart';
 import 'package:cosmatics_app/utils/colors.dart';
+import 'package:cosmatics_app/utils/dimentions.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/big_text.dart';
@@ -44,14 +45,14 @@ class _MainCosmaticPageState extends State<MainCosmaticPage> {
                         ],
                       ),
                       Container(
-                        width: 45,
-                        height: 45,
+                        width: Dimensions.height45,
+                        height: Dimensions.height45,
                         child: IconButton(
-                          icon: Icon(Icons.search_sharp,color: Colors.white,),
+                          icon: Icon(Icons.search_sharp,color: Colors.white,size: Dimensions.iconSize24,),
                           onPressed: () {},
                         ),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(Dimensions.radius15),
                             color: blueush),
                       )
                     ],
@@ -59,7 +60,7 @@ class _MainCosmaticPageState extends State<MainCosmaticPage> {
                 ],
               ),
             ),
-          ),
+          ),SizedBox(height: Dimensions.height20,),
           CosmaticsPageBody()//body
         ],
       ),
