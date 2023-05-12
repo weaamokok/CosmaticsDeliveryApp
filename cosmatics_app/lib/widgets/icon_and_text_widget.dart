@@ -6,10 +6,11 @@ class IConAndTextWidget extends StatelessWidget {
   final String text;
   final Color iconColor;
   final Color color;
-  const IConAndTextWidget({Key? key ,required this.icon,required this.iconColor,required this.text,required this.color});
+  const IConAndTextWidget({super.key ,required this.icon,required this.iconColor,required this.text,required this.color});
 
   @override
   Widget build(BuildContext context) {
+    // ignore: prefer_const_constructors
     return Row(children: [Icon(icon,color: iconColor,),SizedBox(width: 5,),BigText(text: text,color: color,size: 12,)],);
   }
 }
