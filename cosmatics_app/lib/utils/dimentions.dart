@@ -8,6 +8,7 @@ class Dimensions{
   static double pageViewTextContainer=screenHeight/5.9;//standard to make the container in a near 220
   static double pageView=screenHeight/2.64;//standard to make the container in a near 220
 
+  static double height5=screenHeight/140.4;//standard to make the 10 dynmic
   static double height10=screenHeight/84.4;//standard to make the 10 dynmic
   static double height20=screenHeight/42.2;//standard to make the 10 dynmic
   static double height30=screenHeight/28.13;//standard to make the 10 dynmic
@@ -32,5 +33,13 @@ class Dimensions{
 
 
   static double productDetailsImagHeight=screenHeight/2.1;
+  //خطوط
+  static double font14=screenHeight/60.2;
+  static double font17=screenHeight/50.2;
+  static double font20=screenHeight/42.2;
+  static double font26=screenHeight/32.6;
+
+  //bottom bar Height
+  static double bottomHeight=screenHeight/7.03;
 
 }

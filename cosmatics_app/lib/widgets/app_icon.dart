@@ -6,11 +6,12 @@ class AppIcon extends StatelessWidget {
   final Color iconColor;
   final Color backgroundColor;
   final double size;
+  final Function onTap;
   const AppIcon(
       {super.key,
       required this.icon,
       this.iconColor = const Color(0xffffffff),
-      this.size = 40,
+      this.size = 40,required this.onTap,
       this.backgroundColor = const Color(0xff95B6C7)});
 
   @override
@@ -19,7 +20,7 @@ class AppIcon extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(color: backgroundColor,borderRadius: BorderRadius.circular(Dimensions.radius15)),
-    child: Icon(icon,size: 16,color: iconColor,),
+    child: IconButton(icon: Icon(icon,size: 20,color: iconColor,),onPressed: () => onTap(),),
     );
   }
 }
