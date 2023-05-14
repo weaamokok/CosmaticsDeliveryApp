@@ -6,6 +6,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/icon_and_text_widget.dart';
+import '../improved_product_details.dart';
 import 'catagory_section.dart';
 import 'main_cosmatics_page.dart';
 
@@ -80,7 +81,7 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
               gridDelegate:
                   SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               itemBuilder: (context, index) {
-                return InkWell(onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsPage(),)),
+                return InkWell(onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ImprovedProductDetails(),)),
                   child: Container(
                       decoration: BoxDecoration(
                           borderRadius:
