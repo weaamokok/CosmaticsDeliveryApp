@@ -1,22 +1,24 @@
 import 'package:cosmatics_app/data/repository/popular_products_repo.dart';
+import 'package:cosmatics_app/domain/models/product.dart';
 import 'package:get/get.dart';
 
-class PopularProductController extends GetxController{
+import '../domain/models/products.dart';
+
+class PopularProductController extends GetxController {
   final PopularProductRepo popularProductRepo;
   PopularProductController({required this.popularProductRepo});
-  List<dynamic> _popularProductList=[];
-  List<dynamic> get popularProductList=>_popularProductList;
+  List<dynamic> _popularProductList = [];
+  List<dynamic> get popularProductList => _popularProductList;
 
-  Future<void> getPopularProductList()async{
-Response response=await popularProductRepo.getPopularProductList();
-if(response.statusCode==200)
-{
-  _popularProductList=[];
-  //_popularProductList.addAll();
-  update();
-}else{
+  Future<void> getPopularProductList() async {
+    Response response = await popularProductRepo.getPopularProductList();
+    if (response.statusCode == 200) {
+      _popularProductList = [];
+      print(response.body);
+response.body.forEach((v){_popularProductList.add(Product.fromJson(v));});
+      print(_popularProductList);
 
-}
+      update();
+    } else {}
   }
-
 }

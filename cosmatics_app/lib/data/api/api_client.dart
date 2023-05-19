@@ -8,9 +8,10 @@ class ApiClient extends GetConnect implements GetxService {
   late Map<String, String> _mainHeaders; //
   ApiClient({required this.appBaseUrl}) {
     baseUrl = appBaseUrl; //has to do with getx package managment
-    timeout = Duration(seconds: 30); //will wait 30 se for data to get
+    timeout = Duration(seconds: 30);
+    token=""; //will wait 30 se for data to get
     _mainHeaders = {//headers are important to communicate with the server the same info are sent everytime so we make this line
-      'content-type': 'application/jason; charset=UTF-8',
+      'Content-type': 'application/json; charset=UTF-8',
       'Authorization': 'Bearer $token'
     };
   }
