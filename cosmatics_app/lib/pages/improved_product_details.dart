@@ -28,7 +28,9 @@ class ImprovedProductDetails extends StatelessWidget {
                 AppIcon(
                   icon: Icons.shopping_bag,
                   iconColor: Colors.white,
-                  onTap: () {},
+                  onTap: () {
+                    
+                  },
                 )
               ],
             ),
