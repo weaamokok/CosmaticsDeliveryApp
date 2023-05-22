@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
 
+import '../domain/models/product.dart';
 import '../utils/colors.dart';
 import '../utils/dimentions.dart';
 import 'big_text.dart';
 class AppColumn extends StatelessWidget {
-  final String productName;
-  const AppColumn({super.key,required this.productName});
+  final Product product;
+  const AppColumn({super.key,required this.product});
 
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    BigText(text: ' LA ROCHE-POSAY ',size: Dimensions.font20,),
+                    BigText(text: product.name.toString(),size: Dimensions.font20,),
                     Row(
                             children: [
                               Wrap(
                                 children: List.generate(
-                                    5,
-                                    (index) => Icon(
+                                    product.rating!=null? product.rating!.round():1,
+                                    (index) =>product.rating!=null? Icon(
                                           Icons.star,
                                           color:
                                               Color.fromARGB(255, 226, 226, 36),
                                           size: Dimensions.iconSize24,
-                                        )),
+                                        ):Icon(Icons.star_outline_rounded))
                               ),
                               SizedBox(
                                 width: Dimensions.height10,

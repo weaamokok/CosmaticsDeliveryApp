@@ -1,9 +1,12 @@
 import 'package:cosmatics_app/controllers/brands_controller.dart';
 import 'package:cosmatics_app/controllers/popular_products_controller.dart';
+import 'package:cosmatics_app/controllers/top_sale_controllers.dart';
 import 'package:cosmatics_app/pages/home/main_cosmatics_page.dart';
+import 'package:cosmatics_app/utils/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:google_translator/google_translator.dart';
 import 'helper/dependencies.dart' as dep;
 Future<void> main()async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,8 +26,9 @@ class MyApp extends StatelessWidget {
     // Get.find<BrandsController>().getNyxList();
     // Get.find<BrandsController>().getmaybillineList();
          Get.find<BrandsController>().getBrands();
+         Get.find<TopSaleProductController>().getTopSaleProductList();
 
-    return GetMaterialApp(
+    return GoogleTranslatorInit(AppConstants.GTapiKey, builder: () => GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -40,7 +44,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MainCosmaticPage(),
-    );
+    ), translateFrom: Locale('en-us'),translateTo: Locale('ar'),);
   }
 }
 

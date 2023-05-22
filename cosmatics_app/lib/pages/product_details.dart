@@ -1,3 +1,4 @@
+import 'package:cosmatics_app/domain/models/product.dart';
 import 'package:cosmatics_app/utils/dimentions.dart';
 import 'package:cosmatics_app/widgets/app_column.dart';
 import 'package:cosmatics_app/widgets/app_icon.dart';
@@ -70,7 +71,7 @@ class ProductDetailsPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppColumn(
-                        productName: 'LA ROCHE-POSAY ',
+                      product: Product(),
                       ),
                       SizedBox(
                         height: Dimensions.height20,

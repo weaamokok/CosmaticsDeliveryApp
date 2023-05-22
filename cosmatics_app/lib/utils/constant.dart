@@ -15,6 +15,7 @@ class AppConstants{
     static const String GET_PRODUCT_MOOV_PRODUCT_URL="/api/v1/products.json?brand=moov";
 
     static const String TOKEN="APP";
+    static const String GTapiKey="AIzaSyDmRgRMJx5JzJcAwoNrtmz0J-fjGjGGZfc";
 
 }
 

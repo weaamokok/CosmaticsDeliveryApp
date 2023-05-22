@@ -1,5 +1,6 @@
 import 'package:cosmatics_app/controllers/brands_controller.dart';
 import 'package:cosmatics_app/controllers/popular_products_controller.dart';
+import 'package:cosmatics_app/controllers/top_sale_controllers.dart';
 import 'package:cosmatics_app/pages/product_details.dart';
 import 'package:cosmatics_app/utils/colors.dart';
 import 'package:cosmatics_app/utils/dimentions.dart';
@@ -29,7 +30,7 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
   @override
   void initState() {
     super.initState();
-      //  Get.find<BrandsController>().getBrands();
+    //  Get.find<BrandsController>().getBrands();
 
     pageController.addListener(() {
       setState(() {
@@ -46,7 +47,6 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
 
   @override
   Widget build(BuildContext context) {
-   
     return Column(
       children: [
         GetBuilder<BrandsController>(
@@ -64,8 +64,8 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                   itemCount: controller.getBrandsList.length > 5
                       ? 5
                       : controller.getBrandsList.length,
-                  itemBuilder: (context, index) => _buildPageItem(
-                      index, controller.getBrandsList[index]),
+                  itemBuilder: (context, index) =>
+                      _buildPageItem(index, controller.getBrandsList[index]),
                 ),
               );
             }
@@ -101,15 +101,15 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
         const CatagorySection(),
         const SectionHeader(
             hintText: "منتجات مميزة", mainText: 'الاكثر مبيعاً'),
-        GetBuilder<PopularProductController>(
+        GetBuilder<TopSaleProductController>(
           builder: (controller) {
             return Directionality(
               textDirection: TextDirection.rtl,
-              child: SizedBox(
+              child: Container(padding: EdgeInsets.symmetric(horizontal: Dimensions.width10),
                 child: GridView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: controller.popularProductList.length,
+                  itemCount: controller.gettopSaleProductList.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2),
                   itemBuilder: (context, index) {
@@ -118,7 +118,7 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const ImprovedProductDetails(),
+                                 ImprovedProductDetails(product: controller.gettopSaleProductList[index]),
                           )),
                       child: Container(
                           decoration: BoxDecoration(
@@ -129,6 +129,9 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                           // height: Dimensions.height150,
                           margin: const EdgeInsets.symmetric(
                               horizontal: 5, vertical: 5),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: Dimensions.width20,
+                              vertical: Dimensions.height10),
                           child: Stack(
                             alignment: Alignment.center,
                             children: [
@@ -137,8 +140,8 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                                   Expanded(
                                     flex: 2,
                                     child: Image.network(
-                                      controller
-                                          .popularProductList[index].imageLink
+                                      controller.gettopSaleProductList[index]
+                                          .imageLink
                                           .toString(),
                                       fit: BoxFit.cover,
                                       height: Dimensions.height90,
@@ -155,31 +158,44 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Expanded(
+                                          flex: 3,
                                           child: BigText(
-                                            text: '12 ' + 'د.ل',
-                                            size: 14,
-                                            wieght: FontWeight.w600,
-                                            color: black.withOpacity(.7),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: BigText(
-                                            text: 'LA ROCHE-POSAY ',
-                                            size: 12,
+                                            text: controller
+                                                .gettopSaleProductList[index]
+                                                .name,
+                                            size: 13,
                                             color: black.withOpacity(.8),
                                           ),
-                                        ),
+                                        ),SizedBox(height: 5,),
+                                        Expanded(flex: 2,
+                                            child: Row(crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                           
+                                            Icon(
+                                              Icons.star,
+                                              size: 14,
+                                              color: Color.fromARGB(
+                                                  255, 232, 211, 20),
+                                            ),SizedBox(width: Dimensions.width10,), Text(
+                                              controller
+                                                  .gettopSaleProductList[index]
+                                                  .rating
+                                                  .toString(),
+                                           style: TextStyle(fontSize: 13,color: black.withOpacity(.5)),
+                                            ),
+                                          ],
+                                        )),
                                         Expanded(
-                                          child: Wrap(
-                                            children: List.generate(
-                                                5,
-                                                (index) => Icon(
-                                                      Icons.star,
-                                                      color: Color.fromARGB(
-                                                          255, 226, 226, 36),
-                                                      size:
-                                                          Dimensions.iconSize20,
-                                                    )),
+                                          flex: 4,
+                                          child: Container(margin: EdgeInsets.symmetric(horizontal: Dimensions.width10),
+                                            child: BigText(
+                                              text:
+                                                  '${controller.gettopSaleProductList[index].price}' +
+                                                      'د.ل',
+                                              size: 14,
+                                              wieght: FontWeight.w600,
+                                              color: black.withOpacity(.7),
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -266,12 +282,14 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                 top: Dimensions.height10),
             child: Container(),
             decoration: BoxDecoration(
-              border: Border.all(color: blueush.withOpacity(.5)),
+                border: Border.all(color: blueush.withOpacity(.5)),
                 // boxShadow: [
                 //   BoxShadow(blurRadius: 5, color: black.withOpacity(.1))
                 // ],
                 image: DecorationImage(
-                    image: NetworkImage(product.isNotEmpty?product[2].imageLink.toString():'https://img.freepik.com/premium-vector/3d-realistic-cosmetic-product-vector-illustration_156780-764.jpg?w=2000'),
+                    image: NetworkImage(product.isNotEmpty
+                        ? product[2].imageLink.toString()
+                        : 'https://img.freepik.com/premium-vector/3d-realistic-cosmetic-product-vector-illustration_156780-764.jpg?w=2000'),
                     fit: BoxFit.contain),
                 borderRadius: BorderRadius.circular(30),
                 color: Color.fromARGB(255, 255, 255, 255)),
@@ -291,14 +309,13 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         BigText(
-                          text: ' منتجات  ${product.isNotEmpty?product[1].brand.toString():''}',
+                          text:
+                              ' منتجات  ${product.isNotEmpty ? product[1].brand.toString() : ''}',
                           size: 15,
                         ),
                         SizedBox(
-
                           height: Dimensions.height10,
                         ),
-                      
                         SizedBox(
                           height: Dimensions.height20,
                         ),
@@ -326,8 +343,7 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                     //   BoxShadow(
                     //       blurRadius: 10, color: Colors.grey.withOpacity(.3))
                     // ],
-                                  border: Border.all(color: black.withOpacity(.1)),
-
+                    border: Border.all(color: black.withOpacity(.1)),
                     borderRadius: BorderRadius.circular(30),
                     color: Color.fromARGB(255, 255, 255, 255)),
               ),

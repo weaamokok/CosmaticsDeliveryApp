@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:google_translator/google_translator.dart';
 class BigText extends StatelessWidget {
   final Color? color;
   final String text;
