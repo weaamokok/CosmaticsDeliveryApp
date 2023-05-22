@@ -1,3 +1,4 @@
+import 'package:cosmatics_app/controllers/brands_controller.dart';
 import 'package:cosmatics_app/controllers/popular_products_controller.dart';
 import 'package:cosmatics_app/pages/home/main_cosmatics_page.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Get.find<PopularProductController>().getPopularProductList();
+    // Get.find<BrandsController>().getDiorList();
+    // Get.find<BrandsController>().getLorealList();
+    // Get.find<BrandsController>().getMoovList();
+    // Get.find<BrandsController>().getNyxList();
+    // Get.find<BrandsController>().getmaybillineList();
+         Get.find<BrandsController>().getBrands();
+
     return GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
