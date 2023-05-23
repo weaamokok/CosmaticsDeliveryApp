@@ -1,10 +1,7 @@
 import 'package:cosmatics_app/data/repository/brands_repo.dart';
-import 'package:cosmatics_app/data/repository/popular_products_repo.dart';
 import 'package:cosmatics_app/domain/models/product.dart';
 import 'package:get/get.dart';
 
-import '../data/repository/top_sale_repo.dart';
-import '../domain/models/products.dart';
 
 class BrandsController extends GetxController {
   final BrandRepo brandsRepo;
@@ -82,14 +79,7 @@ _brandsList.add(_moovList);
   }
 
   Future<void> getBrands() async {
-    // Response response = await brandsRepo.getMoovProductList();
-    // if (response.statusCode == 200) {
-    //   _moovList = [];
-    //   print(response.body);
-    //   response.body.forEach((v) {
-    //     _moovList.add(Product.fromJson(v));
-    //   });
-    //   print(_moovList);
+ 
     getDiorList();
   update();
     getLorealList();
@@ -101,7 +91,5 @@ _brandsList.add(_moovList);
     getmaybillineList();
 
         update();
-    print(_brandsList);
-    // } else {}
   }
 }

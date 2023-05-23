@@ -1,8 +1,8 @@
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class AppConstants{
+  // ignore: constant_identifier_names
   static const String APP_NAME='Cosmo Derma';
+  // ignore: constant_identifier_names
   static const int APP_VERSION=1;
 
     static const String BASE_URL="http://makeup-api.herokuapp.com";

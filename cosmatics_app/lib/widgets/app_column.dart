@@ -21,9 +21,9 @@ class AppColumn extends StatelessWidget {
                                     (index) =>product.rating!=null? Icon(
                                           Icons.star,
                                           color:
-                                              Color.fromARGB(255, 226, 226, 36),
+                                              const Color.fromARGB(255, 226, 226, 36),
                                           size: Dimensions.iconSize24,
-                                        ):Icon(Icons.star_outline_rounded))
+                                        ):const Icon(Icons.star_outline_rounded))
                               ),
                               SizedBox(
                                 width: Dimensions.height10,

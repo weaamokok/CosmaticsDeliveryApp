@@ -13,6 +13,7 @@ class Dimensions{
   static double height20=screenHeight/42.2;//standard to make the 10 dynmic
   static double height30=screenHeight/28.13;//standard to make the 10 dynmic
   static double height45=screenHeight/18.76;//standard to make the 10 dynmic
+  static double height50=screenHeight/14.00;//standard to make the 10 dynmic
   static double height70=screenHeight/10.76;//standard to make the 10 dynmic
   static double height100=screenHeight/5.5;//standard to make the 10 dynmic
   static double height90=screenHeight/7.5;//standard to make the 10 dynmic

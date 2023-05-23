@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 
 class TopSaleProductRepo extends GetxService {
   final ApiClient apiClient;
-TopSaleProductRepo({required this.apiClient});
+  TopSaleProductRepo({required this.apiClient});
   Future<Response> gettopSaleProductList() async {
-return await apiClient.getData(AppConstants.GET_PRODUCT_POPULAR_PRODUCT_URL);
-
+    return await apiClient
+        .getData(AppConstants.GET_PRODUCT_POPULAR_PRODUCT_URL);
   }
 }

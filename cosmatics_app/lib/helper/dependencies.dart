@@ -6,7 +6,6 @@ import 'package:cosmatics_app/data/repository/brands_repo.dart';
 import 'package:cosmatics_app/data/repository/popular_products_repo.dart';
 import 'package:cosmatics_app/utils/constant.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../data/repository/top_sale_repo.dart';
 
