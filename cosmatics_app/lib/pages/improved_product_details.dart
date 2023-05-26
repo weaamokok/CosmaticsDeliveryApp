@@ -105,12 +105,14 @@ class ImprovedProductDetails extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(vertical: Dimensions.height5),
             decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 10,
-                      color: black.withOpacity(.1),
-                      offset: Offset(0, -2))
-                ],
+                            border: Border.all(color: black.withOpacity(.4)),
+
+                // boxShadow: [
+                //   BoxShadow(
+                //       blurRadius: 10,
+                //       color: black.withOpacity(.1),
+                //       offset: Offset(0, -2))
+                // ],
                 borderRadius: BorderRadius.circular(Dimensions.radius20),
                 color: Colors.white),
             child: Row(children: [
@@ -142,17 +144,25 @@ class ImprovedProductDetails extends StatelessWidget {
             padding: EdgeInsets.symmetric(
                 vertical: Dimensions.height10, horizontal: Dimensions.width20),
             decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 10,
-                      color: black.withOpacity(.1),
-                      offset: Offset(0, -2))
-                ],
+              border: Border.all(color: black.withOpacity(.4)),
+                // boxShadow: [
+                //   BoxShadow(
+                //       blurRadius: 10,
+                //       color: black.withOpacity(.1),
+                //       offset: Offset(0, -2))
+                // ],
                 borderRadius: BorderRadius.circular(Dimensions.radius20),
                 color: Colors.white),
-            child: BigText(
-              text: ' إضافة للسلة | \$10',
-              color: black.withOpacity(.7),
+            child: Row(
+              children: [BigText(
+                  text: ' ${product.price} \$',
+                  color: Color.fromARGB(255, 215, 96, 17),
+                ),
+                BigText(
+                  text: ' إضافة للسلة |',
+                  color: black.withOpacity(.7),
+                ), 
+              ],
             ),
           )
         ]),
