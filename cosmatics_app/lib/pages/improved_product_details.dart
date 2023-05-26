@@ -1,5 +1,8 @@
+import 'package:cosmatics_app/controllers/cart_controller.dart';
+import 'package:cosmatics_app/controllers/popular_products_controller.dart';
 import 'package:cosmatics_app/domain/models/product.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_translator/google_translator.dart';
 import '../utils/colors.dart';
 import '../utils/dimentions.dart';
@@ -14,6 +17,7 @@ class ImprovedProductDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.find<PopularProductController>().initProduct(Get.find<CartController>());
     return Scaffold(backgroundColor: Colors.white,
       body: CustomScrollView(slivers: [
         SliverAppBar(automaticallyImplyLeading: false,
@@ -25,6 +29,7 @@ class ImprovedProductDetails extends StatelessWidget {
                   iconColor: Colors.white,
                   onTap: () {
                     Navigator.pop(context);
+
                   },
                 ),
                 AppIcon(
@@ -91,7 +96,8 @@ class ImprovedProductDetails extends StatelessWidget {
           ),
         )
       ]),
-      bottomNavigationBar: Container(
+      bottomNavigationBar: GetBuilder<PopularProductController>(builder: (controller) {
+        return Container(
         height: Dimensions.bottomHeight,
         decoration: BoxDecoration(
             color: blueush,
@@ -117,7 +123,9 @@ class ImprovedProductDetails extends StatelessWidget {
                 color: Colors.white),
             child: Row(children: [
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.setQuantitiy(false);
+                  },
                   icon: Icon(
                     Icons.remove,
                     color: black.withOpacity(.8),
@@ -126,47 +134,54 @@ class ImprovedProductDetails extends StatelessWidget {
                 width: Dimensions.width10,
               ),
               BigText(
-                text: '0',
+                text: controller.quantity.toString(),
                 color: black.withOpacity(.5),
               ),
               SizedBox(
                 width: Dimensions.width10,
               ),
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.setQuantitiy(true);
+                  },
                   icon: Icon(
                     Icons.add,
                     color: black.withOpacity(.8),
                   )),
             ]),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(
-                vertical: Dimensions.height10, horizontal: Dimensions.width20),
-            decoration: BoxDecoration(
-              border: Border.all(color: black.withOpacity(.4)),
-                // boxShadow: [
-                //   BoxShadow(
-                //       blurRadius: 10,
-                //       color: black.withOpacity(.1),
-                //       offset: Offset(0, -2))
-                // ],
-                borderRadius: BorderRadius.circular(Dimensions.radius20),
-                color: Colors.white),
-            child: Row(
-              children: [BigText(
-                  text: ' ${product.price} \$',
-                  color: Color.fromARGB(255, 215, 96, 17),
-                ),
-                BigText(
-                  text: ' إضافة للسلة |',
-                  color: black.withOpacity(.7),
-                ), 
-              ],
+          InkWell(onTap: (){
+            controller.addItem(product);
+          },
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                  vertical: Dimensions.height10, horizontal: Dimensions.width20),
+              decoration: BoxDecoration(
+                border: Border.all(color: black.withOpacity(.4)),
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //       blurRadius: 10,
+                  //       color: black.withOpacity(.1),
+                  //       offset: Offset(0, -2))
+                  // ],
+                  borderRadius: BorderRadius.circular(Dimensions.radius20),
+                  color: Colors.white),
+              child: Row(
+                children: [BigText(
+                    text: ' ${product.price} \$',
+                    color: Color.fromARGB(255, 215, 96, 17),
+                  ),
+                  BigText(
+                    text: ' إضافة للسلة |',
+                    color: black.withOpacity(.7),
+                  ), 
+                ],
+              ),
             ),
           )
         ]),
-      ),
+      );
+      },)
     );
   }
 }

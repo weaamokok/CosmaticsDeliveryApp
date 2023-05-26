@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
     // Get.find<BrandsController>().getmaybillineList();
          Get.find<BrandsController>().getBrands();
          Get.find<TopSaleProductController>().getTopSaleProductList();
+         Get.find<PopularProductController>().getPopularProductList();
 
     return GoogleTranslatorInit(AppConstants.GTapiKey, builder: () => GetMaterialApp(
       title: 'Flutter Demo',
