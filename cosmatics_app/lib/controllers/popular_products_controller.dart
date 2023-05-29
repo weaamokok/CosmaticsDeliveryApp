@@ -76,10 +76,14 @@ class PopularProductController extends GetxController {
       Get.snackbar('الكمية المضافة', 'يجب إضافة صنف على الاقل',
           backgroundColor: blueush,
           colorText: Colors.white,
-          animationDuration: Duration(milliseconds: 50),
+          animationDuration: const Duration(milliseconds: 50),
           isDismissible: true,
-          duration: Duration(milliseconds: 800));
+          duration: const Duration(milliseconds: 800));
 
     }
+    update();
   }
+int get totalItems{
+  return _cart.totalItems;
+}
 }

@@ -150,7 +150,10 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                                       child: Image.network(
                                         controller.gettopSaleProductList[index]
                                             .imageLink
-                                            .toString(),
+                                            .toString(), errorBuilder: (context, error, stackTrace) {
+                                      return Image.asset(
+                                          'assets/image/error.png');
+                                    },
                                         fit: BoxFit.cover,
                                         height: Dimensions.height90,
                                       ),
