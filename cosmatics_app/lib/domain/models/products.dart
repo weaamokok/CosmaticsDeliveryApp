@@ -10,7 +10,7 @@ class Products {
       required offset,
       required products}) {
     
-    this._products = products;
+    _products = products;
   }
   Products.fromJson(Map<String, dynamic> json) {
  

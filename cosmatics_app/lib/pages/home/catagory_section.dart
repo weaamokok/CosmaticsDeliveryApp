@@ -29,44 +29,41 @@ class CatagorySection extends StatelessWidget {
   }
 }
 class CatagoryCard extends StatelessWidget {
-  CatagoryCard(this.illustration, this.catagory, this.cardsColor);
+  const CatagoryCard(this.illustration, this.catagory, this.cardsColor, {super.key});
 
   final Widget illustration;
   final String catagory;
   final Color? cardsColor;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      //the sigle element which contains card and text
-      child: Column(
-        //column to place the text under the card
-        children: [
-          Container(
-            width:
-                80, //width and hieght of the pink card that contains illustration
-            height: 80,
-            child: illustration,
-            margin: EdgeInsets.all(10.0), //margin around each pink card
-            decoration: BoxDecoration(
-              color: cardsColor,
-              border: Border.all(
-                  color: black.withOpacity(.3),
-                  width: .5,
-                  style: BorderStyle.solid),
-              borderRadius: BorderRadius.all(Radius.circular(Dimensions.radius20)),
-              // boxShadow: [
-              //   BoxShadow(
-              //     color: Colors.grey.withOpacity(0.3),
-              //     spreadRadius: 1,
-              //     blurRadius: 10,
-              //     offset: Offset(2, 2), // changes position of shadow
-              //   ),
-              // ],
-            ),
+    return Column(
+      //column to place the text under the card
+      children: [
+        Container(
+          width:
+              80, //width and hieght of the pink card that contains illustration
+          height: 80,
+          margin: const EdgeInsets.all(10.0), //margin around each pink card
+          decoration: BoxDecoration(
+            color: cardsColor,
+            border: Border.all(
+                color: black.withOpacity(.3),
+                width: .5,
+                style: BorderStyle.solid),
+            borderRadius: BorderRadius.all(Radius.circular(Dimensions.radius20)),
+            // boxShadow: [
+            //   BoxShadow(
+            //     color: Colors.grey.withOpacity(0.3),
+            //     spreadRadius: 1,
+            //     blurRadius: 10,
+            //     offset: Offset(2, 2), // changes position of shadow
+            //   ),
+            // ],
           ),
-         BigText(text: catagory,size: 15,)
-        ],
-      ),
+          child: illustration,
+        ),
+       BigText(text: catagory,size: 15,)
+      ],
     );
   }
 }

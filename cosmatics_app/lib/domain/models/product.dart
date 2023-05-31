@@ -63,34 +63,34 @@ class Product {
     if (json['product_colors'] != null) {
       productColors = <ProductColors>[];
       json['product_colors'].forEach((v) {
-        productColors!.add(new ProductColors.fromJson(v));
+        productColors!.add( ProductColors.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['brand'] = this.brand;
-    data['name'] = this.name;
-    data['price'] = this.price;
-    data['price_sign'] = this.priceSign;
-    data['currency'] = this.currency;
-    data['image_link'] = this.imageLink;
-    data['product_link'] = this.productLink;
-    data['website_link'] = this.websiteLink;
-    data['description'] = this.description;
-    data['rating'] = this.rating;
-    data['category'] = this.category;
-    data['product_type'] = this.productType;
-    data['tag_list'] = this.tagList;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['product_api_url'] = this.productApiUrl;
-    data['api_featured_image'] = this.apiFeaturedImage;
-    if (this.productColors != null) {
+    final Map<String, dynamic> data =  <String, dynamic>{};
+    data['id'] = id;
+    data['brand'] = brand;
+    data['name'] = name;
+    data['price'] = price;
+    data['price_sign'] = priceSign;
+    data['currency'] = currency;
+    data['image_link'] = imageLink;
+    data['product_link'] = productLink;
+    data['website_link'] = websiteLink;
+    data['description'] = description;
+    data['rating'] = rating;
+    data['category'] = category;
+    data['product_type'] = productType;
+    data['tag_list'] = tagList;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['product_api_url'] = productApiUrl;
+    data['api_featured_image'] = apiFeaturedImage;
+    if (productColors != null) {
       data['product_colors'] =
-          this.productColors!.map((v) => v.toJson()).toList();
+          productColors!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -108,9 +108,9 @@ class ProductColors {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['hex_value'] = this.hexValue;
-    data['colour_name'] = this.colourName;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['hex_value'] = hexValue;
+    data['colour_name'] = colourName;
     return data;
   }
 }

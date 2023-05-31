@@ -1,8 +1,9 @@
 
+// ignore_for_file: constant_identifier_names
+
 class AppConstants{
-  // ignore: constant_identifier_names
+  
   static const String APP_NAME='Cosmo Derma';
-  // ignore: constant_identifier_names
   static const int APP_VERSION=1;
 
     static const String BASE_URL="http://makeup-api.herokuapp.com";

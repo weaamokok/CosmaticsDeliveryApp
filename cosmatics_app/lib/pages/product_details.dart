@@ -22,7 +22,7 @@ class ProductDetailsPage extends StatelessWidget {
             child: Container(
               width: double.maxFinite,
               height: Dimensions.productDetailsImagHeight,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('assets/image/e.png'),
                       fit: BoxFit.cover)),
@@ -62,7 +62,7 @@ class ProductDetailsPage extends StatelessWidget {
                       right: Dimensions.width30,
                       left: Dimensions.width30,
                       top: Dimensions.height30),
-                  decoration: BoxDecoration(boxShadow:[ BoxShadow(blurRadius: 10,color: black.withOpacity(.1),offset: Offset(0, -2))],
+                  decoration: BoxDecoration(boxShadow:[ BoxShadow(blurRadius: 10,color: black.withOpacity(.1),offset: const Offset(0, -2))],
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(Dimensions.radius30),
                           topRight: Radius.circular(Dimensions.radius30)),
@@ -83,7 +83,7 @@ class ProductDetailsPage extends StatelessWidget {
                       SizedBox(
                         height: Dimensions.height10,
                       ),
-                      Expanded(
+                      const Expanded(
                         child: SingleChildScrollView(
                           child: ExpandableText(
                             text:
@@ -108,7 +108,7 @@ class ProductDetailsPage extends StatelessWidget {
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Container(
             padding: EdgeInsets.symmetric(vertical: Dimensions.height5),
-            decoration: BoxDecoration(boxShadow:[ BoxShadow(blurRadius: 10,color: black.withOpacity(.1),offset: Offset(0, -2))],
+            decoration: BoxDecoration(boxShadow:[ BoxShadow(blurRadius: 10,color: black.withOpacity(.1),offset: const Offset(0, -2))],
                 borderRadius: BorderRadius.circular(Dimensions.radius20),
                 color: Colors.white),
             child: Row(children: [
@@ -139,7 +139,7 @@ class ProductDetailsPage extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(
                 vertical: Dimensions.height10, horizontal: Dimensions.width20),
-            decoration: BoxDecoration(boxShadow:[ BoxShadow(blurRadius: 10,color: black.withOpacity(.1),offset: Offset(0, -2))],
+            decoration: BoxDecoration(boxShadow:[ BoxShadow(blurRadius: 10,color: black.withOpacity(.1),offset: const Offset(0, -2))],
                 borderRadius: BorderRadius.circular(Dimensions.radius20),
                 color: Colors.white),
             child: BigText(

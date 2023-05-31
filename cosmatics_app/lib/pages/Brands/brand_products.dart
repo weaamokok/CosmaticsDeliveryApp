@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../domain/models/product.dart';
 import '../../utils/colors.dart';
 import '../../widgets/big_text.dart';
+import '../home/main_cosmatics_page.dart';
 import '../improved_product_details.dart';
 
 class BrandsPage extends StatelessWidget {
@@ -29,6 +30,10 @@ class BrandsPage extends StatelessWidget {
                     child: Container(
                       width: Dimensions.height45,
                       height: Dimensions.height50,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(Dimensions.radius15),
+                          color: blueush),
                       child: IconButton(
                         icon: Icon(
                           Icons.arrow_back,
@@ -36,13 +41,10 @@ class BrandsPage extends StatelessWidget {
                           size: Dimensions.iconSize24,
                         ),
                         onPressed: () {
+
                           Navigator.pop(context);
                         },
                       ),
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(Dimensions.radius15),
-                          color: blueush),
                     ),
                   ),
                   SizedBox(
@@ -50,25 +52,27 @@ class BrandsPage extends StatelessWidget {
                   ),
                   Expanded(
                     flex: 5,
-                    child: TextFormField(
-                      textDirection: TextDirection.rtl,
-                      controller: cont,
-                      keyboardType: TextInputType.text,
-                      onChanged: (String query) {},
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                        hintText:
-                            '${listOfProducts.first.brand.toString()} ابحث في منتجات  ',
-                        prefixIcon: const Icon(Icons.search),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                          borderSide: BorderSide(
-                            color: black.withOpacity(.2),
+                    child: SizedBox(height: Dimensions.height50,
+                      child: TextFormField(
+                        textDirection: TextDirection.rtl,
+                        controller: cont,
+                        keyboardType: TextInputType.text,
+                        onChanged: (String query) {},
+                        textAlign: TextAlign.right,
+                        decoration: InputDecoration(hintStyle:TextStyle(color: black.withOpacity(.4), fontSize: 13, fontFamily: 'Cairo',),
+                          hintText:
+                              '${listOfProducts.first.brand.toString()} ابحث في منتجات  ',
+                          prefixIcon: const Icon(Icons.search),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                            borderSide: BorderSide(
+                              color: black.withOpacity(.2),
+                            ),
                           ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                          borderSide: BorderSide(color: blueush),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                            borderSide: BorderSide(color: blueush),
+                          ),
                         ),
                       ),
                     ),
@@ -76,9 +80,10 @@ class BrandsPage extends StatelessWidget {
                 ],
               ),
             ),
-          ),
+          ),   SectionHeader(
+            hintText: " من  ${listOfProducts.first.brand.toString()}", mainText: ' منتجات مميزة '),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: Dimensions.width20),
+            padding: EdgeInsets.symmetric(horizontal: Dimensions.width20,),
             child: Directionality(
               textDirection: TextDirection.rtl,
               child: GridView.builder(
@@ -147,20 +152,51 @@ class BrandsPage extends StatelessWidget {
                                       const SizedBox(
                                         height: 5,
                                       ),
-                                      Expanded(
-                                        flex: 4,
-                                        child: Container(
-                                          margin: EdgeInsets.symmetric(
-                                              horizontal: Dimensions.width10),
-                                          child: BigText(
-                                            text:
-                                                '${listOfProducts[index].price}' +
-                                                    'د.ل',
-                                            size: 15,
-                                            wieght: FontWeight.w600,
-                                            color: black.withOpacity(.7),
-                                          ),
-                                        ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            flex: 4,
+                                            child: Container(
+                                              margin: EdgeInsets.symmetric(
+                                                  horizontal: Dimensions.width10),
+                                              child: BigText(
+                                                text:
+                                                    '${listOfProducts[index].price}' 'د.ل',
+                                                size: 13,
+                                                wieght: FontWeight.w600,
+                                                color: black.withOpacity(.7),
+                                              ),
+                                            ),
+                                          ),       Expanded(
+                                              flex: 2,
+                                              child: Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  const Icon(
+                                                    Icons.star,
+                                                    size: 14,
+                                                    color: Color.fromARGB(
+                                                        255, 232, 211, 20),
+                                                  ),
+                                                  SizedBox(
+                                                    width: Dimensions.width10,
+                                                  ),
+                                                  Text(
+                                              listOfProducts[
+                                                            index]
+                                                        .rating==null?'0.0':
+                                                          listOfProducts[
+                                                            index]
+                                                        .rating.toString(),
+                                                    style: TextStyle(
+                                                        fontSize: 13,
+                                                        color: black
+                                                            .withOpacity(.5)),
+                                                  ),
+                                                ],
+                                              )),
+                                        ],
                                       ),
                                     ],
                                   ),

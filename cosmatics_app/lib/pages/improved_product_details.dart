@@ -3,17 +3,17 @@ import 'package:cosmatics_app/controllers/popular_products_controller.dart';
 import 'package:cosmatics_app/domain/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_translator/google_translator.dart';
 import '../utils/colors.dart';
 import '../utils/dimentions.dart';
 import '../widgets/app_column.dart';
 import '../widgets/app_icon.dart';
 import '../widgets/big_text.dart';
 import '../widgets/exoandable_text.dart';
+import 'cart/cart_details.dart';
 
 class ImprovedProductDetails extends StatelessWidget {
   final Product product;
-  ImprovedProductDetails({required this.product});
+  const ImprovedProductDetails({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,9 @@ class ImprovedProductDetails extends StatelessWidget {
                         AppIcon(
                           icon: Icons.shopping_bag,
                           iconColor: Colors.white,
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(context, PageRouteBuilder(pageBuilder: (context, animation, secondaryAnimation) => const CartDetails(),));
+                          },
                         ),
                         Container(
                           width: Dimensions.width45,
@@ -53,7 +55,7 @@ class ImprovedProductDetails extends StatelessWidget {
                           child: Center(
                               child: Text(
                             controller.totalItems.toString(),
-                            style: TextStyle(fontSize: 13),
+                            style: const TextStyle(fontSize: 13),
                           )),
                         ),
                       ],
@@ -197,7 +199,7 @@ class ImprovedProductDetails extends StatelessWidget {
                           children: [
                             BigText(
                               text: ' ${product.price} \$',
-                              color: Color.fromARGB(255, 215, 96, 17),
+                              color: const Color.fromARGB(255, 215, 96, 17),
                             ),
                             BigText(
                               text: ' إضافة للسلة |',

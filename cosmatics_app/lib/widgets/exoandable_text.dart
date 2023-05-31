@@ -43,7 +43,7 @@ class _ExpandableTextState extends State<ExpandableText> {
                 children: [
                   BigText(
                     text:
-                        hiddenText ? (firstHalf + "" ):( widget.text),
+                        hiddenText ? (firstHalf ):( widget.text),
                     size: Dimensions.font14,overflow: TextOverflow.visible,
                   ),
                   InkWell(
@@ -51,7 +51,6 @@ class _ExpandableTextState extends State<ExpandableText> {
                       setState(() {
                         hiddenText=!hiddenText;
 
-                        print(hiddenText);
                       });
                     },
                     child: Row(

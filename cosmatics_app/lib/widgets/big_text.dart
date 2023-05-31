@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_translator/google_translator.dart';
+// ignore: must_be_immutable
 class BigText extends StatelessWidget {
   final Color? color;
   final String text;
@@ -8,7 +8,7 @@ class BigText extends StatelessWidget {
   TextOverflow overflow;
 
   BigText(
-      {Key? key,
+      { Key? key,
       this.color,
       this.size = 20,
       required this.text,this.wieght=FontWeight.normal,

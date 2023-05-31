@@ -5,7 +5,7 @@ class Dimensions{
   static double screenWidth=Get.context!.width;
 
   static double pageViewContainer=screenHeight/3.84;//standard to make the container in a near 220
-  static double pageViewTextContainer=screenHeight/5.9;//standard to make the container in a near 220
+  static double pageViewTextContainer=screenHeight/6.9;//standard to make the container in a near 220
   static double pageView=screenHeight/2.64;//standard to make the container in a near 220
 
   static double height5=screenHeight/140.4;//standard to make the 10 dynmic

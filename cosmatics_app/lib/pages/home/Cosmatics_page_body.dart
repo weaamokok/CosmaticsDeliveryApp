@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:cosmatics_app/controllers/brands_controller.dart';
 import 'package:cosmatics_app/controllers/top_sale_controllers.dart';
 import 'package:cosmatics_app/utils/colors.dart';
@@ -75,7 +76,7 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
           },
         ),
         SizedBox(
-          height: Dimensions.height20,
+          height: Dimensions.height10,
         ),
         GetBuilder<BrandsController>(
           builder: (controller) {
@@ -178,10 +179,25 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                                               color: black.withOpacity(.8),
                                             ),
                                           ),
-                                          const SizedBox(
-                                            height: 5,
-                                          ),
-                                          Expanded(
+                                      
+                                   
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                flex: 4,
+                                                child: Container(
+                                                  margin: EdgeInsets.symmetric(
+                                                      horizontal:
+                                                          Dimensions.width10),
+                                                  child: BigText(
+                                                    text:
+                                                        '${controller.gettopSaleProductList[index].price}' 'د.ل',
+                                                    size: 14,
+                                                    wieght: FontWeight.w600,
+                                                    color: black.withOpacity(.7),
+                                                  ),
+                                                ),
+                                              ),       Expanded(
                                               flex: 2,
                                               child: Row(
                                                 crossAxisAlignment:
@@ -209,21 +225,7 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                                                   ),
                                                 ],
                                               )),
-                                          Expanded(
-                                            flex: 4,
-                                            child: Container(
-                                              margin: EdgeInsets.symmetric(
-                                                  horizontal:
-                                                      Dimensions.width10),
-                                              child: BigText(
-                                                text:
-                                                    '${controller.gettopSaleProductList[index].price}' +
-                                                        'د.ل',
-                                                size: 14,
-                                                wieght: FontWeight.w600,
-                                                color: black.withOpacity(.7),
-                                              ),
-                                            ),
+                                            ],
                                           ),
                                         ],
                                       ),
@@ -333,7 +335,7 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
               child: Container(
                 height: Dimensions.pageViewTextContainer,
                 margin: EdgeInsets.symmetric(
-                    horizontal: 25, vertical: Dimensions.height5),
+                    horizontal: Dimensions.height20, vertical: Dimensions.height5),
                 decoration: BoxDecoration(
                     // boxShadow: [
                     //   BoxShadow(
@@ -344,8 +346,8 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                     color: const Color.fromARGB(255, 255, 255, 255)),
                 child: Container(
                   padding: EdgeInsets.symmetric(
-                      horizontal: Dimensions.height30,
-                      vertical: Dimensions.height30),
+                      horizontal: Dimensions.height45,
+                      vertical: Dimensions.height20),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -355,7 +357,7 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
                           size: 17,
                         ),
                         SizedBox(
-                          height: Dimensions.height20,
+                          height: Dimensions.height10,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

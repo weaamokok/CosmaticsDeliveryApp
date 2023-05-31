@@ -6,7 +6,6 @@ import 'package:cosmatics_app/route/route_helper.dart';
 import 'package:cosmatics_app/utils/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_translator/google_translator.dart';
 import 'helper/dependencies.dart' as dep;
 Future<void> main()async {
@@ -35,7 +34,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
      getPages: RouteHelper.route,
       home: const MainCosmaticPage()
-    ), translateFrom: Locale('en-us'),translateTo: Locale('ar'),);
+    ), translateFrom: const Locale('en-us'),translateTo: const Locale('ar'),);
+
   }
 }
 

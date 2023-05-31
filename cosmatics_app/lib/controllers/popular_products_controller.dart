@@ -5,7 +5,6 @@ import 'package:cosmatics_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../domain/models/products.dart';
 
 class PopularProductController extends GetxController {
   final PopularProductRepo popularProductRepo;
@@ -46,9 +45,9 @@ class PopularProductController extends GetxController {
       Get.snackbar('الكمية المختارة', 'لايمكن تقليل العددها أكثر',
           backgroundColor: blueush,
           colorText: Colors.white,
-          animationDuration: Duration(milliseconds: 50),
+          animationDuration: const Duration(milliseconds: 50),
           isDismissible: true,
-          duration: Duration(milliseconds: 800));
+          duration: const Duration(milliseconds: 800));
       return 0;
     } else if (quantity > 20) {
       return 20;
@@ -69,7 +68,7 @@ class PopularProductController extends GetxController {
     if (quantity > 0) {
       _cart.addItem(product, quantity);
       quantity=0;//so it doesn't mess the quantity in overall
-      _cart.items.forEach((key, value) { print('the id is'+value.id.toString()+'and the Quantity is '+value.quantity.toString());});
+     
     } else {
 
   

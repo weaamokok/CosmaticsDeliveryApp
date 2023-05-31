@@ -4,7 +4,6 @@ import 'package:cosmatics_app/utils/dimentions.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/big_text.dart';
-import 'catagory_section.dart';
 
 class MainCosmaticPage extends StatefulWidget {
   const MainCosmaticPage({Key? key}) : super(key: key);
@@ -21,64 +20,58 @@ class _MainCosmaticPageState extends State<MainCosmaticPage> {
       body: Column(
         children: [
           Container(
-            //header
-            child: Container(
-              margin: EdgeInsets.only(top: 45, bottom: 15),
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Row(
-                              children: [
-                                BigText(
-                                    text: "طرابلس",
-                                    color: black.withOpacity(.8)),
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(Icons.arrow_drop_down_outlined))
-                              ],
-                            ),
+            margin: const EdgeInsets.only(top: 45, bottom: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: Row(
+                            children: [
+                              BigText(
+                                  text: "طرابلس",
+                                  color: black.withOpacity(.8)),
+                              IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.arrow_drop_down_outlined))
+                            ],
                           ),
-                        ],
-                      ),
-                      Container(
-                        width: Dimensions.height45,
-                        height: Dimensions.height45,
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.search_sharp,
-                            color: Colors.white,
-                            size: Dimensions.iconSize24,
-                          ),
-                          onPressed: ()  {
- 
-                          },
                         ),
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.circular(Dimensions.radius15),
-                            color: blueush),
-                      )
-                    ],
-                  ),
-                ],
-              ),
+                      ],
+                    ),
+                    Container(
+                      width: Dimensions.height45,
+                      height: Dimensions.height45,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(Dimensions.radius15),
+                          color: blueush),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.search_sharp,
+                          color: Colors.white,
+                          size: Dimensions.iconSize24,
+                        ),
+                        onPressed: ()  {
+ 
+                        },
+                      ),
+                    )
+                  ],
+                ),
+              ],
             ),
           ),
           SizedBox(
-            height: Dimensions.height20,
-          ),
-          Expanded(child: SingleChildScrollView(child: CosmaticsPageBody())),
+            height: Dimensions.height10,          ),
+          const Expanded(child: SingleChildScrollView(child: CosmaticsPageBody())),
           //body,
           //Catagories,
-          
-        
         ],
       ),
     );
@@ -96,14 +89,14 @@ class SectionHeader extends StatelessWidget {
     return Directionality(
         textDirection: TextDirection.rtl,
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: Dimensions.width45),
+          margin: EdgeInsets.symmetric(horizontal: Dimensions.width30),
           child: Row(
             children: [
               BigText(
-                text: mainText,
+                text: mainText,size: 16,
               ),
               SizedBox(
-                width: Dimensions.width30,
+                width: Dimensions.width20,
               ),
               BigText(
                 text: hintText,
