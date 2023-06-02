@@ -93,7 +93,7 @@ class SectionHeader extends StatelessWidget {
           child: Row(
             children: [
               BigText(
-                text: mainText,size: 16,
+                text: mainText,size: 17,
               ),
               SizedBox(
                 width: Dimensions.width20,

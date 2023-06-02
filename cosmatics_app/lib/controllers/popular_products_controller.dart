@@ -5,6 +5,8 @@ import 'package:cosmatics_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../domain/models/cart.dart';
+
 
 class PopularProductController extends GetxController {
   final PopularProductRepo popularProductRepo;
@@ -84,5 +86,8 @@ class PopularProductController extends GetxController {
   }
 int get totalItems{
   return _cart.totalItems;
+}
+List<Cart> get getCartItems{
+  return _cart.getCartItems;
 }
 }

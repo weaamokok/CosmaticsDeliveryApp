@@ -9,6 +9,7 @@ import '../widgets/app_column.dart';
 import '../widgets/app_icon.dart';
 import '../widgets/big_text.dart';
 import '../widgets/exoandable_text.dart';
+import 'Brands/brand_products.dart';
 import 'cart/cart_details.dart';
 
 class ImprovedProductDetails extends StatelessWidget {
@@ -42,8 +43,9 @@ class ImprovedProductDetails extends StatelessWidget {
                           icon: Icons.shopping_bag,
                           iconColor: Colors.white,
                           onTap: () {
-                            Navigator.push(context, PageRouteBuilder(pageBuilder: (context, animation, secondaryAnimation) => const CartDetails(),));
+                            showModalBottomSheet(isScrollControlled: true,context: context, builder: (context) => CartDetails(),);
                           },
+
                         ),
                         Container(
                           width: Dimensions.width45,
