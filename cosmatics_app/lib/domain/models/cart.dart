@@ -1,14 +1,17 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:cosmatics_app/domain/models/product.dart';
+
 class Cart {
   int? id;
   String? name;
-  int? price;
+  double? price;
   String? img;
   int? quantity;
   bool? isExit;
   String? time;
+  Product? product;
   Cart({
     this.id,
     this.name,
@@ -17,16 +20,19 @@ class Cart {
     this.quantity,
     this.isExit,
     this.time,
+    this.product
   });
 
   Cart copyWith({
     int? id,
     String? name,
-    int? price,
+    double? price,
     String? img,
     int? quantity,
     bool? isExit,
     String? time,
+      Product? product
+
   }) {
     return Cart(
       id: id ?? this.id,
@@ -36,6 +42,7 @@ class Cart {
       quantity: quantity ?? this.quantity,
       isExit: isExit ?? this.isExit,
       time: time ?? this.time,
+      product: product ?? this.product,
     );
   }
 
@@ -48,6 +55,7 @@ class Cart {
       'quantity': quantity,
       'isExit': isExit,
       'time': time,
+      'product':product
     };
   }
 
@@ -55,11 +63,12 @@ class Cart {
     return Cart(
       id: map['id'] != null ? map['id'] as int : null,
       name: map['name'] != null ? map['name'] as String : null,
-      price: map['price'] != null ? map['price'] as int : null,
+      price: map['price'] != null ? map['price'] as double : null,
       img: map['img'] != null ? map['img'] as String : null,
       quantity: map['quantity'] != null ? map['quantity'] as int : null,
       isExit: map['isExit'] != null ? map['isExit'] as bool : null,
       time: map['time'] != null ? map['time'] as String : null,
+      product: map['product'] != null ? map['product'] as Product : null,
     );
   }
 
@@ -69,7 +78,7 @@ class Cart {
 
   @override
   String toString() {
-    return 'Cart(id: $id, name: $name, price: $price, img: $img, quantity: $quantity, isExit: $isExit, time: $time)';
+    return 'Cart(id: $id, name: $name, price: $price, img: $img, quantity: $quantity, isExit: $isExit, time: $time,product: $product)';
   }
 
   @override
@@ -83,7 +92,8 @@ class Cart {
       other.img == img &&
       other.quantity == quantity &&
       other.isExit == isExit &&
-      other.time == time;
+      other.time == time&&
+      other.product == product;
   }
 
   @override
@@ -94,6 +104,7 @@ class Cart {
       img.hashCode ^
       quantity.hashCode ^
       isExit.hashCode ^
-      time.hashCode;
+      time.hashCode^
+      product.hashCode;
   }
 }

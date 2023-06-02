@@ -1,6 +1,7 @@
 import 'package:cosmatics_app/controllers/cart_controller.dart';
 import 'package:cosmatics_app/controllers/popular_products_controller.dart';
 import 'package:cosmatics_app/domain/models/product.dart';
+import 'package:cosmatics_app/route/route_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../utils/colors.dart';
@@ -18,8 +19,7 @@ class ImprovedProductDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.find<PopularProductController>()
-        .initProduct(Get.find<CartController>());
+  
     return Scaffold(
         backgroundColor: Colors.white,
         body: CustomScrollView(slivers: [
@@ -43,7 +43,7 @@ class ImprovedProductDetails extends StatelessWidget {
                           icon: Icons.shopping_bag,
                           iconColor: Colors.white,
                           onTap: () {
-                            showModalBottomSheet(isScrollControlled: true,context: context, builder: (context) => CartDetails(),);
+                           Get.toNamed(RouteHelper.getCartDetails());
                           },
 
                         ),
@@ -181,6 +181,7 @@ class ImprovedProductDetails extends StatelessWidget {
                     InkWell(
                       onTap: () {
                         controller.addItem(product);
+                        product.price;
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(

@@ -7,6 +7,7 @@ import 'package:cosmatics_app/utils/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_translator/google_translator.dart';
+import 'controllers/cart_controller.dart';
 import 'helper/dependencies.dart' as dep;
 Future<void> main()async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,12 +29,14 @@ class MyApp extends StatelessWidget {
          Get.find<BrandsController>().getBrands();
          Get.find<TopSaleProductController>().getTopSaleProductList();
          Get.find<PopularProductController>().getPopularProductList();
+           Get.find<PopularProductController>()
+        .initProduct(Get.find<CartController>());
 
     return GoogleTranslatorInit(AppConstants.GTapiKey, builder: () => GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-     getPages: RouteHelper.route,
-      home: const MainCosmaticPage()
+     getPages: RouteHelper.route,initialRoute: RouteHelper.initial,
+   //   home: const MainCosmaticPage()
     ), translateFrom: const Locale('en-us'),translateTo: const Locale('ar'),);
 
   }

@@ -21,12 +21,13 @@ class CartController extends GetxController {
         return Cart(
             id: value.id,
             name: value.name,
-            price: int.tryParse(value.price.toString()),
+            price: value.price,
             img: value.img,
             quantity: value.quantity! +
                 quantity, //here we update and add the quantity to the previus one
             isExit: true,
-            time: DateTime.now().toString());
+            time: DateTime.now().toString(),product: product);
+
       });
       if (totalQuantity <= 0) {
         _items.remove(product.id);
@@ -37,13 +38,14 @@ class CartController extends GetxController {
         return Cart(
             id: product.id,
             name: product.name,
-            price: int.tryParse(product.price.toString()),
+            price: double.tryParse(product.price.toString()),
             img: product.imageLink,
             quantity: quantity,
             isExit: true,
-            time: DateTime.now().toString());
+            time: DateTime.now().toString(),product: product);
       });
     }
+    update();
   }
 
   int get totalItems {
@@ -53,9 +55,17 @@ class CartController extends GetxController {
     });
     return totalQuantity;
   }
-  List<Cart> get getCartItems{
-   return  _items.entries.map((e) {
-return e.value;
+
+  List<Cart> get getCartItems {
+    return _items.entries.map((e) {
+      return e.value;
     }).toList();
+  }
+
+  double get totalAmount{
+    var total =0.0;
+    _items.forEach((key, value) {total+=value.quantity!*value.price!; });
+    return total;
+
   }
 }
