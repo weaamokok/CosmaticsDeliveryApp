@@ -1,6 +1,8 @@
+
 import 'package:cosmatics_app/controllers/cart_controller.dart';
 import 'package:cosmatics_app/controllers/popular_products_controller.dart';
 import 'package:cosmatics_app/domain/models/product.dart';
+import 'package:cosmatics_app/pages/home/home_page.dart';
 import 'package:cosmatics_app/pages/improved_product_details.dart';
 import 'package:cosmatics_app/widgets/big_text.dart';
 import 'package:flutter/material.dart';
@@ -41,8 +43,8 @@ class CartDetails extends StatelessWidget {
                           size: Dimensions.iconSize24,
                         ),
                         onPressed: () {
-                          Navigator.pop(context);//when nothing  to go back to !!
-                        },
+                     // print(context);
+Get.to(()=>HomePage());                        },
                       ),
                     ),
                     GetBuilder<PopularProductController>(
@@ -237,8 +239,8 @@ class CartDetails extends StatelessWidget {
                           // ],
                           borderRadius:
                               BorderRadius.circular(Dimensions.radius20),
-                          color: blueush),
-                      child: BigText(text: controller.totalAmount.toString()+' د.ل ',color: Colors.white,),
+                          color: Colors.white),
+                      child: BigText(text: controller.totalAmount.toString()+' د.ل ',color:black,),
                     ),
                     InkWell(
                       onTap: () {
