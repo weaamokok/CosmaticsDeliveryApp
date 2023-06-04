@@ -8,7 +8,10 @@ class CartController extends GetxController {
   final CartRepo cartRepo;
   CartController({required this.cartRepo});
   Map<int, Cart> _items = {};
-  Map<int, Cart> get items => _items;
+  Map<int, Cart> get items => _items;//temp
+//that is stored in the memory
+List<Cart> storageItems=[];
+
 
   void addItem(Product product, int quantity) {
     var totalQuantity = 0;
@@ -45,6 +48,7 @@ class CartController extends GetxController {
             time: DateTime.now().toString(),product: product);
       });
     }
+    cartRepo.addToCartList(getCartItems);
     update();
   }
 
@@ -68,4 +72,16 @@ class CartController extends GetxController {
     return total;
 
   }
+List<Cart> getCartData(){
+  setCart=cartRepo.getCartList();//setting the cart 
+  print('عد المخزن'+'${storageItems.length}');
+  return storageItems;
+}
+set setCart(List<Cart> items){
+
+  storageItems=items;
+for(int i=0;i<storageItems.length;i++){
+  
+  _items.putIfAbsent(storageItems[i].id as int, () => storageItems[i]);
+}}
 }

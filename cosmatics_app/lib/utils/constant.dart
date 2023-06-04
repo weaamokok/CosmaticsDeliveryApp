@@ -17,7 +17,7 @@ class AppConstants{
 
     static const String TOKEN="APP";
     static const String GTapiKey="AIzaSyDmRgRMJx5JzJcAwoNrtmz0J-fjGjGGZfc";
-
+static const String CART_LIST='cart-list';
 }
 
 

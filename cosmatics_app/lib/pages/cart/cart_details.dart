@@ -47,7 +47,7 @@ class CartDetails extends StatelessWidget {
 Get.to(()=>HomePage());                        },
                       ),
                     ),
-                    GetBuilder<PopularProductController>(
+                    GetBuilder<CartController>(
                       builder: (controller) {
                         return Stack(
                           children: [
@@ -145,7 +145,8 @@ Get.to(()=>HomePage());                        },
                                           children: [
                                             BigText(
                                               text:
-                                                  total.toString() + '  د.ل  ',
+                                                 controller
+                                              .getCartItems[index].price.toString() + '  د.ل  ',
                                               size: 18,
                                             ),
                                             Container(
@@ -240,7 +241,7 @@ Get.to(()=>HomePage());                        },
                           borderRadius:
                               BorderRadius.circular(Dimensions.radius20),
                           color: Colors.white),
-                      child: BigText(text: controller.totalAmount.toString()+' د.ل ',color:black,),
+                      child: BigText(text: controller.totalAmount.toStringAsFixed(2)+' د.ل ',color:black,),
                     ),
                     InkWell(
                       onTap: () {

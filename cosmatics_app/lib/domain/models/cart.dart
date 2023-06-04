@@ -68,7 +68,7 @@ class Cart {
       quantity: map['quantity'] != null ? map['quantity'] as int : null,
       isExit: map['isExit'] != null ? map['isExit'] as bool : null,
       time: map['time'] != null ? map['time'] as String : null,
-      product: map['product'] != null ? map['product'] as Product : null,
+      product: map['product'] != null ?Product.fromMap(map['product'] )  : null,
     );
   }
 

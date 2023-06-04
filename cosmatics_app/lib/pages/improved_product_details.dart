@@ -35,7 +35,7 @@ class ImprovedProductDetails extends StatelessWidget {
                     Navigator.pop(context);
                   },
                 ),
-                GetBuilder<PopularProductController>(
+                GetBuilder<CartController>(
                   builder: (controller) {
                     return Stack(
                       children: [
@@ -43,6 +43,7 @@ class ImprovedProductDetails extends StatelessWidget {
                           icon: Icons.shopping_bag,
                           iconColor: Colors.white,
                           onTap: () {
+                            controller.getCartData();
                            Get.toNamed(RouteHelper.getCartDetails());
                           },
 

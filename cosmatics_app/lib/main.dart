@@ -25,17 +25,17 @@ class MyApp extends StatelessWidget {
     // Get.find<BrandsController>().getDiorList();
     // Get.find<BrandsController>().getLorealList();
     // Get.find<BrandsController>().getMoovList();
-    // Get.find<BrandsController>().getNyxList();
-    // Get.find<BrandsController>().getmaybillineList();
   
-    return GetBuilder<PopularProductController>(builder: (controller) {
-      return GetMaterialApp(
+    return GetBuilder<CartController>(builder: (controller) {
+             Get.find<CartController>().getCartData();
+
+      return GetBuilder<PopularProductController>(builder: (controller) =>  GetMaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         getPages: RouteHelper.route,
         // initialRoute: RouteHelper.initial,
            home: const SplashScreen()
-      );
+      ),);
     },);
   }
 }

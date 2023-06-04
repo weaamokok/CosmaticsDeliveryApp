@@ -94,6 +94,55 @@ class Product {
     }
     return data;
   }
+  
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+     'id':id,
+   'brand':brand,
+ 'name':name,
+   'price':price,
+   'priceSign':priceSign,
+   'currency':currency,
+  'imageLink':imageLink,
+ 'productLink':productLink,
+  'websiteLink':websiteLink,
+   'description':description,
+ 'rating':rating,
+ 'category':category,
+ 'productType':productType,
+ 'tagList':tagList,
+ 'createdAt':createdAt,
+  'updatedAt':updatedAt,
+ 'productApiUrl':productApiUrl,
+  'apiFeaturedImage':apiFeaturedImage,
+  'productColors':productColors
+    };
+  }
+
+  factory Product.fromMap(Map<String, dynamic> map) {
+    return Product(
+      id: map['id'] != null ? map['id'] as int : null,
+      name: map['name'] != null ? map['name'] as String : null,
+      price: map['price'] != null ? map['price'] as String : null,
+      imageLink: map['imageLink'] != null ? map['imageLink'] as String : null,
+      apiFeaturedImage: map['apiFeaturedImage'] != null ? map['apiFeaturedImage'] as String : null,
+      brand: map['brand'] != null ? map['brand'] as String : null,
+      category: map['category'] != null ? map['category'] as String : null,
+      createdAt: map['createdAt'] != null ? map['createdAt'] as String : null,
+      currency: map['currency'] != null ? map['currency'] as String : null,
+      description: map['description'] != null ? map['description'] as String : null,
+      priceSign: map['priceSign'] != null ? map['priceSign'] as String : null,
+      productApiUrl: map['productApiUrl'] != null ? map['productApiUrl'] as String : null,
+      productLink: map['productLink'] != null ? map['productLink'] as String : null,
+      productType: map['productType'] != null ? map['productType'] as String : null,
+      rating: map['rating'] != null ? map['rating'] as double : null,
+      updatedAt: map['updatedAt'] != null ? map['updatedAt'] as String : null,
+      websiteLink: map['websiteLink'] != null ? map['websiteLink'] as String : null,
+      tagList: map['tagList'] != null ? map['tagList'] as List<String> : null,
+      productColors: map['productColors'] != null ? map['productColors'] as List<ProductColors> : null,
+    );
+  }
+
 }
 
 class ProductColors {
