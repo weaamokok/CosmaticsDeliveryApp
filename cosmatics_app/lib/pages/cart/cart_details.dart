@@ -1,6 +1,5 @@
 
 import 'package:cosmatics_app/controllers/cart_controller.dart';
-import 'package:cosmatics_app/controllers/popular_products_controller.dart';
 import 'package:cosmatics_app/domain/models/product.dart';
 import 'package:cosmatics_app/pages/home/home_page.dart';
 import 'package:cosmatics_app/pages/improved_product_details.dart';
@@ -106,8 +105,6 @@ Get.to(()=>HomePage());                        },
                         shrinkWrap: true,
                         itemCount: controller.getCartItems.length,
                         itemBuilder: (context, index) {
-                          int Quant = _cartList[index].quantity!;
-                          double total = _cartList[index].price! * Quant;
                           return InkWell(
                             onTap: () => Get.to(() => ImprovedProductDetails(
                                 product: _cartList[index].product as Product)),

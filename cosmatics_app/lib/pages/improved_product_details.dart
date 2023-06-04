@@ -10,8 +10,6 @@ import '../widgets/app_column.dart';
 import '../widgets/app_icon.dart';
 import '../widgets/big_text.dart';
 import '../widgets/exoandable_text.dart';
-import 'Brands/brand_products.dart';
-import 'cart/cart_details.dart';
 
 class ImprovedProductDetails extends StatelessWidget {
   final Product product;
