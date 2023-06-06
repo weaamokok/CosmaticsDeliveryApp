@@ -2,7 +2,11 @@ import 'package:cosmatics_app/pages/home/Cosmatics_page_body.dart';
 import 'package:cosmatics_app/utils/colors.dart';
 import 'package:cosmatics_app/utils/dimentions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../controllers/cart_controller.dart';
+import '../../route/route_helper.dart';
+import '../../widgets/app_icon.dart';
 import '../../widgets/big_text.dart';
 
 class MainCosmaticPage extends StatefulWidget {
@@ -44,23 +48,56 @@ class _MainCosmaticPageState extends State<MainCosmaticPage> {
                         ),
                       ],
                     ),
-                    Container(
-                      width: Dimensions.height45,
-                      height: Dimensions.height45,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(Dimensions.radius15),
-                          color: blueush),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.search_sharp,
-                          color: Colors.white,
-                          size: Dimensions.iconSize24,
-                        ),
-                        onPressed: ()  {
+                    Row(
+                      children: [       Container(
+                          width: Dimensions.height45,
+                          height: Dimensions.height45,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.circular(Dimensions.radius15),
+                              color: blueush),
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.search_sharp,
+                              color: Colors.white,
+                              size: Dimensions.iconSize24,
+                            ),
+                            onPressed: ()  {
  
-                        },
-                      ),
+                            },
+                          ),
+                        ),  SizedBox(width: Dimensions.height10,), GetBuilder<CartController>(
+                  builder: (controller) {
+                    return Stack(
+                      children: [
+                        AppIcon(
+                          icon: Icons.shopping_bag,size: Dimensions.height45,
+                          iconColor: Colors.white,
+                          onTap: () {
+                            controller.getCartData();
+                           Get.toNamed(RouteHelper.getCartDetails());
+                          },
+
+                        ),
+                        Container(
+                          width: Dimensions.width45,
+                          height: Dimensions.height20,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.circular(Dimensions.radius15),
+                              color: Colors.orange),
+                          child: Center(
+                              child: Text(
+                            controller.totalItems.toString(),
+                            style: const TextStyle(fontSize: 13,color: Colors.white),
+                          )),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+                  
+                      ],
                     )
                   ],
                 ),

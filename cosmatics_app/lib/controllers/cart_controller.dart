@@ -8,10 +8,9 @@ class CartController extends GetxController {
   final CartRepo cartRepo;
   CartController({required this.cartRepo});
   Map<int, Cart> _items = {};
-  Map<int, Cart> get items => _items;//temp
+  Map<int, Cart> get items => _items; //temp
 //that is stored in the memory
-List<Cart> storageItems=[];
-
+  List<Cart> storageItems = [];
 
   void addItem(Product product, int quantity) {
     var totalQuantity = 0;
@@ -29,8 +28,8 @@ List<Cart> storageItems=[];
             quantity: value.quantity! +
                 quantity, //here we update and add the quantity to the previus one
             isExit: true,
-            time: DateTime.now().toString(),product: product);
-
+            time: DateTime.now().toString(),
+            product: product);
       });
       if (totalQuantity <= 0) {
         _items.remove(product.id);
@@ -45,7 +44,8 @@ List<Cart> storageItems=[];
             img: product.imageLink,
             quantity: quantity,
             isExit: true,
-            time: DateTime.now().toString(),product: product);
+            time: DateTime.now().toString(),
+            product: product);
       });
     }
     cartRepo.addToCartList(getCartItems);
@@ -66,22 +66,29 @@ List<Cart> storageItems=[];
     }).toList();
   }
 
-  double get totalAmount{
-    var total =0.0;
-    _items.forEach((key, value) {total+=value.quantity!*value.price!; });
+  double get totalAmount {
+    var total = 0.0;
+    _items.forEach((key, value) {
+      total += value.quantity! * value.price!;
+    });
     return total;
-
   }
-List<Cart> getCartData(){
-  setCart=cartRepo.getCartList();//setting the cart 
-  print('عد المخزن'+'${storageItems.length}');
-  return storageItems;
-}
-set setCart(List<Cart> items){
 
-  storageItems=items;
-for(int i=0;i<storageItems.length;i++){
-  
-  _items.putIfAbsent(storageItems[i].id as int, () => storageItems[i]);
-}}
+  List<Cart> getCartData() {
+    setCart = cartRepo.getCartList(); //setting the cart
+    return storageItems;
+  }
+
+  set setCart(List<Cart> items) {
+    storageItems = items;
+    for (int i = 0; i < storageItems.length; i++) {
+      _items.putIfAbsent(storageItems[i].id as int, () => storageItems[i]);
+    }
+  }
+  void addToHistory(){
+    cartRepo.cartHistory;
+  }
+  void clear(){
+    _items={};
+  }
 }

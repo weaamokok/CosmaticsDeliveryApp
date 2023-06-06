@@ -242,7 +242,7 @@ Get.to(()=>HomePage());                        },
                     ),
                     InkWell(
                       onTap: () {
-                    
+                    controller.addToHistory();
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(
