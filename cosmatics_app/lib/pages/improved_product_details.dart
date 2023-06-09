@@ -154,7 +154,7 @@ class ImprovedProductDetails extends StatelessWidget {
                               controller.setQuantitiy(false);
                             },
                             icon: Icon(
-                              Icons.remove,
+                              Icons.remove,size: 20,
                               color: black.withOpacity(.8),
                             )),
                         SizedBox(
@@ -162,7 +162,7 @@ class ImprovedProductDetails extends StatelessWidget {
                         ),
                         BigText(
                           text: controller.quantity.toString(),
-                          color: black.withOpacity(.5),
+                          color: black.withOpacity(.5),size: 17,
                         ),
                         SizedBox(
                           width: Dimensions.width10,
@@ -172,7 +172,7 @@ class ImprovedProductDetails extends StatelessWidget {
                               controller.setQuantitiy(true);
                             },
                             icon: Icon(
-                              Icons.add,
+                              Icons.add,size: 20,
                               color: black.withOpacity(.8),
                             )),
                       ]),
@@ -200,11 +200,11 @@ class ImprovedProductDetails extends StatelessWidget {
                         child: Row(
                           children: [
                             BigText(
-                              text: ' ${product.price} \$',
+                              text: ' ${product.price} \$',size: 16,
                               color: const Color.fromARGB(255, 215, 96, 17),
                             ),
                             BigText(
-                              text: ' إضافة للسلة |',
+                              text: ' إضافة للسلة |',size: 15,
                               color: black.withOpacity(.7),
                             ),
                           ],

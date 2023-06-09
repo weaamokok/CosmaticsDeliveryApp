@@ -7,12 +7,16 @@ class BrandsController extends GetxController {
   final BrandRepo brandsRepo;
   BrandsController({required this.brandsRepo});
   List<List<Product>> _brandsList = [];
+  List<List<Product>> _skinTypeList = [];
+  List<List<Product>> _normalSkinList = [];
   List<Product> _maybillineList = [];
   List<Product> _diorList = [];
   List<Product> _nyxList = [];
   List<Product> _moovList = [];
   List<Product> _lorealList = [];
+  
   List<List<Product>> get getBrandsList => _brandsList;
+  List<List<Product>> get getSkinTypeList => _brandsList;
 
   Future<void> getmaybillineList() async {
     Response response = await brandsRepo.getMaybellineProductList();

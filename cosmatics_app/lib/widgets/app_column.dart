@@ -29,7 +29,7 @@ class AppColumn extends StatelessWidget {
                                 width: Dimensions.height10,
                               ),
                               BigText(
-                                text: '4.5',
+                                text: product.rating!=null?product.rating.toString():'0.0',
                                 size: 12,
                                 color: black.withOpacity(.7),
                               ),

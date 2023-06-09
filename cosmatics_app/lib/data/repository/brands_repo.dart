@@ -20,5 +20,7 @@ return await apiClient.getData(AppConstants.GET_PRODUCT_loreal_PRODUCT_URL);
   }
   Future<Response> getMoovProductList() async {
 return await apiClient.getData(AppConstants.GET_PRODUCT_MOOV_PRODUCT_URL);
+  }  Future<Response> getnormalSkinProductList() async {
+return await apiClient.getData(AppConstants.GET_PRODUCT_MOOV_PRODUCT_URL);
   }
 }

@@ -3,6 +3,8 @@ import 'package:cosmatics_app/pages/home/main_cosmatics_page.dart';
 import 'package:cosmatics_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 
+import '../cart/cart_history.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -14,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   List pages = [
     MainCosmaticPage(),
-  CartDetails(),
+  CartHisory(),
     Container(child: Text(''))
   ];
   void onNavTap(index){

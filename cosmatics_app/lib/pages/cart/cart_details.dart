@@ -135,7 +135,7 @@ Get.to(()=>HomePage());                        },
                                               .getCartItems[index].name
                                               .toString(),
                                           size: 17,
-                                        ),
+                                        ),SizedBox(height: Dimensions.height10,),
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
@@ -144,7 +144,7 @@ Get.to(()=>HomePage());                        },
                                               text:
                                                  controller
                                               .getCartItems[index].price.toString() + '  د.ل  ',
-                                              size: 18,
+                                              size: 17,
                                             ),
                                             Container(
                                               decoration: BoxDecoration(
@@ -238,7 +238,7 @@ Get.to(()=>HomePage());                        },
                           borderRadius:
                               BorderRadius.circular(Dimensions.radius20),
                           color: Colors.white),
-                      child: BigText(text: controller.totalAmount.toStringAsFixed(2)+' د.ل ',color:black,),
+                      child: BigText(text: controller.totalAmount.toStringAsFixed(2)+' د.ل ',color:black,size: 16,),
                     ),
                     InkWell(
                       onTap: () {
@@ -247,7 +247,7 @@ Get.to(()=>HomePage());                        },
                       child: Container(
                         padding: EdgeInsets.symmetric(
                             vertical: Dimensions.height10,
-                            horizontal: Dimensions.height70),
+                            horizontal: Dimensions.height50),
                         decoration: BoxDecoration(
                             border: Border.all(color: black.withOpacity(.4)),
                             // boxShadow: [
@@ -259,7 +259,7 @@ Get.to(()=>HomePage());                        },
                             borderRadius:
                                 BorderRadius.circular(Dimensions.radius20),
                             color: blueush),
-                        child: BigText(text:'الدفع ' ,color: Colors.white,)
+                        child: BigText(text:'الدفع ' ,color: Colors.white,size: 16,)
                       ),
                     )
                   ]),
