@@ -1,6 +1,6 @@
 <?php
 
-$db_name = "project";
+$db_name = "cosmoapp";
 $db_server = "127.0.0.1";
 $db_user = "root";
 $db_pass = "";
