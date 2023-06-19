@@ -4,13 +4,14 @@ class BigText extends StatelessWidget {
   final Color? color;
   final String text;
   double size;
+  TextAlign? algin;
   TextDirection? dirction;
   FontWeight? wieght;
   TextOverflow overflow;
 
   BigText(
       { Key? key,
-      this.color,
+      this.color,this.algin,
       this.size = 20,this.dirction,
       required this.text,this.wieght=FontWeight.normal,
       this.overflow = TextOverflow.ellipsis});
@@ -18,7 +19,7 @@ class BigText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      text,textAlign: TextAlign.center,
+      text,textAlign: algin,
       overflow: overflow,textDirection:dirction,
       style: TextStyle(color: color, fontSize: size, fontFamily: 'Cairo',),
     );

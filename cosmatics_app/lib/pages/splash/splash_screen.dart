@@ -52,8 +52,8 @@ _loadResource()async{
           ScaleTransition(scale: animation,
             child: Image.asset(
               'assets/image/Cosmo.png',
-              width: Dimensions.height150,
-              height: Dimensions.height150,
+              width: Dimensions.height150/1.5,
+              height: Dimensions.height150/1.5,
             ),
           ),
           SizedBox(width: Dimensions.height100,child: LinearProgressIndicator(minHeight: 5,color:blueush.withOpacity(.4),backgroundColor: Color(0xffF39422),)),

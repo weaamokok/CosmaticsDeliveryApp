@@ -13,7 +13,8 @@ import '../widgets/exoandable_text.dart';
 
 class ImprovedProductDetails extends StatelessWidget {
   final Product product;
-  const ImprovedProductDetails({super.key, required this.product});
+  final String? img;
+  const ImprovedProductDetails({super.key, required this.product,this.img});
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +71,7 @@ class ImprovedProductDetails extends StatelessWidget {
             backgroundColor: Colors.white,
             flexibleSpace: FlexibleSpaceBar(
               background: Image.network(
-                product.imageLink.toString(),
+                product.imageLink!=null?product.imageLink.toString():img!,
                 width: double.maxFinite,
                 fit: BoxFit.scaleDown,
               ),

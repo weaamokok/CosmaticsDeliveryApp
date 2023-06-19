@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cosmatics_app/controllers/cart_controller.dart';
+import 'package:cosmatics_app/pages/cart/cart_details.dart';
 import 'package:cosmatics_app/utils/colors.dart';
 import 'package:cosmatics_app/widgets/app_icon.dart';
 import 'package:cosmatics_app/widgets/big_text.dart';
@@ -82,6 +83,29 @@ class OrderHistoryView extends StatelessWidget {
 
     List<int> itemsPerOrder = cartItemsPerOrderToList();
     var listCounter = 0;
+    //formate date of orders
+    Widget timeWidget(int index){
+      var outputDate=DateTime.now().toString();
+        
+      if(index<getCartHistoryList.length){
+         
+                              DateTime parsedDate =
+                                  intl.DateFormat('yyyy-MM-dd HH:mm:ss').parse(
+                                      getCartHistoryList[listCounter].time!);
+                              var inputDate =
+                                  DateTime.parse(parsedDate.toString());
+                               var outputformat =
+                                  intl.DateFormat('MM/dd/yyyy hh:mm a');
+                                  outputDate=outputformat.format(inputDate);
+                            
+                            
+      }
+        return BigText(
+                                  color: black.withOpacity(.8),
+                                  text: outputDate,
+                                  size: 15);
+
+    }
     return itemsPerOrder.isNotEmpty
         ? Expanded(
             child: ListView(
@@ -98,20 +122,8 @@ class OrderHistoryView extends StatelessWidget {
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            (() {
-                              DateTime parsedDate =
-                                  intl.DateFormat('yyyy-MM-dd HH:mm:ss').parse(
-                                      getCartHistoryList[listCounter].time!);
-                              var inputDate =
-                                  DateTime.parse(parsedDate.toString());
-                              var outputformat =
-                                  intl.DateFormat('MM/dd/yyyy hh:mm a');
-                              return BigText(
-                                  color: black.withOpacity(.8),
-                                  text: outputformat.format(inputDate),
-                                  size: 15);
-                            }()),
+                          children: [timeWidget(listCounter)
+                           ,
                             SizedBox(
                               height: Dimensions.height5,
                             ),
@@ -177,9 +189,10 @@ class OrderHistoryView extends StatelessWidget {
                                         {}; //to fill up items
                                     for (int j = 0;
                                         j < getCartHistoryList.length;
-                                        j) {
+                                        j++) {
                                       if (getCartHistoryList[j].time ==
                                           orderTime[i]) {
+                                         //   print(  getCartHistoryList[j].img);
                                         moreOrder.putIfAbsent(
                                             getCartHistoryList[j].id!,
                                             () => Cart.fromJson(jsonDecode(
@@ -187,8 +200,11 @@ class OrderHistoryView extends StatelessWidget {
                                                     getCartHistoryList[j]))));
                                       }
                                     }
-                                    Get.find<CartController>().setItems=moreOrder;
+                                    Get.find<CartController>().setItems =
+                                        moreOrder;
                                     Get.find<CartController>().addToCartList();
+                                    Get.to(() =>
+                                        CartDetails()); //the image is missing
                                   },
                                   child: Container(
                                     padding: EdgeInsets.symmetric(
@@ -219,14 +235,14 @@ class OrderHistoryView extends StatelessWidget {
             child: Center(
                 child: Column(children: [
               Image.asset(
-                'assets/image/empty cart.png',
+                'assets/image/emptyBox.png',
                 width: Dimensions.height100 * 2,
               ),
               SizedBox(
                 height: Dimensions.height30,
               ),
               BigText(
-                text: ' لا توجد مشتريات في سلتك بعد\nستضاف المشتريات هنا',
+                text: 'لم تقم بأي عمليات شراء بعد\n سيتم حفظ كل عمليات الشراء هنا',
                 size: 17,
               )
             ])),

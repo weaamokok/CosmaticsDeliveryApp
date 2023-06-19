@@ -106,8 +106,11 @@ Get.to(()=>HomePage());                        },
                         itemCount: controller.getCartItems.length,
                         itemBuilder: (context, index) {
                           return InkWell(
-                            onTap: () => Get.to(() => ImprovedProductDetails(
-                                product: _cartList[index].product as Product)),
+                            onTap: () {
+                              print(_cartList[index].img);
+                               Get.to(() =>
+                             ImprovedProductDetails(img: _cartList[index].img,
+                                product: _cartList[index].product as Product));},
                             child: Container(
                               margin: EdgeInsets.symmetric(
                                   vertical: Dimensions.height10),

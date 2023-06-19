@@ -36,7 +36,7 @@ class _ExpandableTextState extends State<ExpandableText> {
     return Container(
         child: secondHalf.isEmpty
             ? BigText(
-                text: firstHalf,
+                text: firstHalf,algin: TextAlign.left,
                 size: Dimensions.font17,
               )
             : Column(
