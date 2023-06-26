@@ -6,6 +6,7 @@ import 'package:cosmatics_app/data/api/api_client.dart';
 import 'package:cosmatics_app/data/repository/brands_repo.dart';
 import 'package:cosmatics_app/data/repository/cart_repo.dart';
 import 'package:cosmatics_app/data/repository/popular_products_repo.dart';
+import 'package:cosmatics_app/data/repository/user_repo.dart';
 import 'package:cosmatics_app/utils/constant.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,6 +27,7 @@ Future<void> init() async {
   Get.lazyPut(() => TopSaleProductRepo(apiClient: Get.find()));
   Get.lazyPut(() => BrandRepo(apiClient: Get.find()));
   Get.lazyPut(() => CartRepo(sharedPreferences:Get.find()));
+  Get.lazyPut(() => UserRepo(sharedPreferences:Get.find()));
 //controllers
   Get.lazyPut(() => PopularProductController(popularProductRepo: Get.find()));
   Get.lazyPut(() => TopSaleProductController(topSaleProductRepo: Get.find()));

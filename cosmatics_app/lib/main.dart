@@ -1,4 +1,5 @@
 import 'package:cosmatics_app/controllers/popular_products_controller.dart';
+import 'package:cosmatics_app/pages/auth_pages/login_page.dart';
 import 'package:cosmatics_app/pages/splash/splash_screen.dart';
 import 'package:cosmatics_app/route/route_helper.dart';
 import 'package:flutter/material.dart';

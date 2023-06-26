@@ -37,7 +37,7 @@ class CostumerInfoRegistering extends StatelessWidget {
                                 dirction: TextDirection.rtl,
                               ),
                               AppIcon(
-                                icon: Icons.arrow_back,
+                                icon: Icons.arrow_forward,
                                 onTap: () {
                                   Navigator.pop(context);
                                 },
