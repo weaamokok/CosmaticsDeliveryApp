@@ -6,5 +6,8 @@ class AuthController extends GetxController{
   AuthController({required this.authRepo});
   loginWithPhoneNumber(String phoneNum){
     authRepo.loginWithPhone(phoneNum);
+  }  verfiyPhoneOtp(String verificationId,String smsCode  ){
+    authRepo.verfiyPhoneOtp(verificationId,smsCode);
   }
+
 }

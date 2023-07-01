@@ -1,9 +1,11 @@
 import 'package:cosmatics_app/utils/colors.dart';
 import 'package:cosmatics_app/utils/dimentions.dart';
 import 'package:cosmatics_app/widgets/big_text.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 import '../../controllers/auth_controller.dart';
 
@@ -47,59 +49,84 @@ class loginPage extends StatelessWidget {
                 SizedBox(
                   width: Dimensions.height50*5,
                   height: Dimensions.height45,
-                  child: TextFormField(controller: emailCon,
-                      decoration: InputDecoration(
-                          hintText: 'إسم المستخدم أو البريد الالكتروني....',
-                          hintStyle: TextStyle(
-                              fontFamily: 'Cairo',
-                              fontSize: 13,
-                              color: black.withOpacity(.5)),
-                          focusColor: blueush,
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal: Dimensions.height30,
-                              vertical: Dimensions.height10),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: blueush),
-                              borderRadius:
-                                  BorderRadius.circular(Dimensions.radius15)),
-                          border: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: black.withOpacity(.7)),
-                              borderRadius:
-                                  BorderRadius.circular(Dimensions.radius15)))),
+                  child:Directionality(textDirection: TextDirection.ltr,
+                    child: InternationalPhoneNumberInput(countries: ['LY'],textAlign: TextAlign.right,inputDecoration:   InputDecoration(
+                            hintText: ' رقم الهاتف',
+                            hintStyle: TextStyle(
+                                fontFamily: 'Cairo',
+                                fontSize: 13,
+                                color: black.withOpacity(.5)),
+                            focusColor: blueush,
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: Dimensions.height30,
+                                vertical: Dimensions.height10),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: blueush),
+                                borderRadius:
+                                    BorderRadius.circular(Dimensions.radius15)),
+                            border: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: black.withOpacity(.7)),
+                                borderRadius:
+                                    BorderRadius.circular(Dimensions.radius15))) ,onInputChanged: (value) {
+                      
+                    },),
+                  )
+                  //  TextFormField(controller: emailCon,
+                  //     decoration: InputDecoration(
+                  //         hintText: 'إسم المستخدم أو البريد الالكتروني....',
+                  //         hintStyle: TextStyle(
+                  //             fontFamily: 'Cairo',
+                  //             fontSize: 13,
+                  //             color: black.withOpacity(.5)),
+                  //         focusColor: blueush,
+                  //         contentPadding: EdgeInsets.symmetric(
+                  //             horizontal: Dimensions.height30,
+                  //             vertical: Dimensions.height10),
+                  //         focusedBorder: OutlineInputBorder(
+                  //             borderSide: BorderSide(color: blueush),
+                  //             borderRadius:
+                  //                 BorderRadius.circular(Dimensions.radius15)),
+                  //         border: OutlineInputBorder(
+                  //             borderSide:
+                  //                 BorderSide(color: black.withOpacity(.7)),
+                  //             borderRadius:
+                  //                 BorderRadius.circular(Dimensions.radius15)))),
                 ),
                 SizedBox(
                   height: Dimensions.height20,
                 ),
-                SizedBox(
-                  width: Dimensions.height50*5,
-                  height: Dimensions.height45,
-                  child: TextFormField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          hintText: 'كلمة المرور..',
-                          hintStyle: TextStyle(
-                              fontFamily: 'Cairo',
-                              fontSize: 13,
-                              color: black.withOpacity(.5)),
-                          focusColor: blueush,
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal: Dimensions.height30,
-                              vertical: Dimensions.height10),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: blueush),
-                              borderRadius:
-                                  BorderRadius.circular(Dimensions.radius15)),
-                          border: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: black.withOpacity(.7)),
-                              borderRadius:
-                                  BorderRadius.circular(Dimensions.radius15)))),
-                ),
-                SizedBox(
-                  height: Dimensions.height20,
-                ),
-                InkWell(onTap: () => controller.loginWithPhoneNumber(emailCon.text),
+                // SizedBox(
+                //   width: Dimensions.height50*5,
+                //   height: Dimensions.height45,
+                //   child: TextFormField(
+                //       obscureText: true,
+                //       decoration: InputDecoration(
+                //           hintText: 'كلمة المرور..',
+                //           hintStyle: TextStyle(
+                //               fontFamily: 'Cairo',
+                //               fontSize: 13,
+                //               color: black.withOpacity(.5)),
+                //           focusColor: blueush,
+                //           contentPadding: EdgeInsets.symmetric(
+                //               horizontal: Dimensions.height30,
+                //               vertical: Dimensions.height10),
+                //           focusedBorder: OutlineInputBorder(
+                //               borderSide: BorderSide(color: blueush),
+                //               borderRadius:
+                //                   BorderRadius.circular(Dimensions.radius15)),
+                //           border: OutlineInputBorder(
+                //               borderSide:
+                //                   BorderSide(color: black.withOpacity(.7)),
+                //               borderRadius:
+                //                   BorderRadius.circular(Dimensions.radius15)))),
+                // ),
+                // SizedBox(
+                //   height: Dimensions.height20,
+                // ),
+                InkWell(onTap: () {controller.loginWithPhoneNumber(emailCon.text);
+            
+                },
                   child: Container(
                     height: Dimensions.height45,
                   width: Dimensions.height50*5,

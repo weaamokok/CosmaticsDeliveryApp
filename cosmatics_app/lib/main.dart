@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         getPages: RouteHelper.route,
         // initialRoute: RouteHelper.initial,
-           home: const OtpVerificationScreen(phoneNum: '92038324')
+           home: loginPage() 
       ),);
     },);
   }

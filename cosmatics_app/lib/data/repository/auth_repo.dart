@@ -11,5 +11,8 @@ class AuthRepo extends GetxService {
   }   loginWithPhone( String phoneNum) async {
      await apiClient
         .LoginWithphoneNumber(phoneNum);
+  } verfiyPhoneOtp( String verificationId,String smsCode ) async {
+     await apiClient
+        .verfiyOtp(verificationId,smsCode);
   }
 }
