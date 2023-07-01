@@ -1,5 +1,11 @@
 import 'package:cosmatics_app/utils/constant.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../pages/auth_pages/otp_verification_screen.dart';
+import '../../pages/home/home_page.dart';
+import '../../utils/colors.dart';
 
 class ApiClient extends GetConnect implements GetxService {
   late String
@@ -24,5 +30,29 @@ return response;
     }catch(e){
       return Response(statusCode: 1,statusText: e.toString());
     }
+  }
+  //Auth with phone number 
+  LoginWithphoneNumber(String phoneNum)async{
+    final auth=FirebaseAuth.instance;
+    await FirebaseAuth.instance.verifyPhoneNumber(
+  phoneNumber: phoneNum,
+  verificationCompleted: (PhoneAuthCredential credential) async{
+ await auth.signInWithCredential(credential).whenComplete(() => Get.to(()=>const HomePage()));
+  },
+  verificationFailed: (FirebaseAuthException e) {
+       if (e.code == 'invalid-phone-number') {
+       Get.snackbar('   رقم الهاتف غير صحيح', "تأكد من رقم الهاتف واعد المحاولة ",
+          backgroundColor: blueush,
+          colorText: Colors.white,
+          animationDuration: const Duration(milliseconds: 50),
+          isDismissible: true,
+          duration: const Duration(milliseconds: 800));
+    }
+  },
+  codeSent: (String verificationId, int? resendToken) {
+    Get.to(()=> OtpVerificationScreen(phoneNum: phoneNum));
+  },
+  codeAutoRetrievalTimeout: (String verificationId) {},
+);
   }
 }
