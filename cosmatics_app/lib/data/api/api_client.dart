@@ -2,6 +2,7 @@ import 'package:cosmatics_app/utils/constant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../pages/auth_pages/otp_verification_screen.dart';
 import '../../pages/home/home_page.dart';
@@ -27,21 +28,25 @@ class ApiClient extends GetConnect implements GetxService {
   Future<Response> getData(String uri) async {
     try {
       Response response = await get(uri);
+      print(response.body);
       return response;
     } catch (e) {
+      print(e);
       return Response(statusCode: 1, statusText: e.toString());
     }
   }
 
   //Auth with phone number
   LoginWithphoneNumber(String phoneNum) async {
+    final SharedPreferences shared=await SharedPreferences.getInstance();
     final auth = FirebaseAuth.instance;
     await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: phoneNum,
       verificationCompleted: (PhoneAuthCredential credential) async {
-        await auth
-            .signInWithCredential(credential)
-            .whenComplete(() => Get.to(() => const HomePage()));
+     await auth
+            .signInWithCredential(credential).then((value) =>   shared.setString('userId', value.additionalUserInfo!.providerId!)   )
+            .whenComplete((){ Get.to(() => const HomePage());});
+      
       },
       verificationFailed: (FirebaseAuthException e) {
         if (e.code == 'invalid-phone-number') {

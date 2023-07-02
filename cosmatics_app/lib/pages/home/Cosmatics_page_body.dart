@@ -31,7 +31,6 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
   void initState() {
     super.initState();
     //  Get.find<BrandsController>().getBrands();
-
     pageController.addListener(() {
       setState(() {
         _currentPageValue = pageController.page!;
@@ -51,6 +50,8 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
       children: [
         GetBuilder<BrandsController>(
           builder: (controller) {
+            print(controller.getBrandsList);
+
             if (controller.getBrandsList.isEmpty) {
               return Center(
                   child: CircularProgressIndicator(
@@ -107,6 +108,8 @@ class _CosmaticsPageBodyState extends State<CosmaticsPageBody> {
             hintText: "منتجات مميزة", mainText: 'الاكثر مبيعاً'),
         GetBuilder<TopSaleProductController>(
           builder: (controller) {
+                      print(controller.gettopSaleProductList);
+
             if (controller.gettopSaleProductList.isNotEmpty) {
               return Directionality(
                 textDirection: TextDirection.rtl,

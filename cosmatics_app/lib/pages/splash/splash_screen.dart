@@ -22,19 +22,11 @@ class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
   late Animation<double> animation;
   late AnimationController controller;
-_loadResource()async{
-  await  Get.find<BrandsController>().getBrands();
-   await Get.find<TopSaleProductController>().getTopSaleProductList();
-  await  Get.find<PopularProductController>().getPopularProductList();
-    Get.find<PopularProductController>()
-        .initProduct(Get.find<CartController>());
 
-}
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _loadResource();
     controller =
         AnimationController(vsync: this, duration: const Duration(milliseconds:200 ))..forward();
     animation = CurvedAnimation(parent: controller, curve: Curves.linear);

@@ -8,7 +8,8 @@ class AuthRepo extends GetxService {
   Future<Response> login( ) async {
     return await apiClient
         .getData(AppConstants.GET_PRODUCT_POPULAR_PRODUCT_URL);
-  }   loginWithPhone( String phoneNum) async {
+  }  
+   loginWithPhone( String phoneNum) async {
      await apiClient
         .LoginWithphoneNumber(phoneNum);
   } verfiyPhoneOtp( String verificationId,String smsCode ) async {
