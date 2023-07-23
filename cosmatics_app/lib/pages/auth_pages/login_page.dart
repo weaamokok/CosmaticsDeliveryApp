@@ -1,3 +1,4 @@
+import 'package:cosmatics_app/pages/auth_pages/sign_up.dart';
 import 'package:cosmatics_app/utils/colors.dart';
 import 'package:cosmatics_app/utils/dimentions.dart';
 import 'package:cosmatics_app/widgets/big_text.dart';
@@ -15,6 +16,7 @@ class loginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
      PhoneNumber phoneCon = PhoneNumber();
+     TextEditingController passCon = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
@@ -109,37 +111,37 @@ class loginPage extends StatelessWidget {
                     SizedBox(
                       height: Dimensions.height20,
                     ),
-                    // SizedBox(
-                    //   width: Dimensions.height50*5,
-                    //   height: Dimensions.height45,
-                    //   child: TextFormField(
-                    //       obscureText: true,
-                    //       decoration: InputDecoration(
-                    //           hintText: 'كلمة المرور..',
-                    //           hintStyle: TextStyle(
-                    //               fontFamily: 'Cairo',
-                    //               fontSize: 13,
-                    //               color: black.withOpacity(.5)),
-                    //           focusColor: blueush,
-                    //           contentPadding: EdgeInsets.symmetric(
-                    //               horizontal: Dimensions.height30,
-                    //               vertical: Dimensions.height10),
-                    //           focusedBorder: OutlineInputBorder(
-                    //               borderSide: BorderSide(color: blueush),
-                    //               borderRadius:
-                    //                   BorderRadius.circular(Dimensions.radius15)),
-                    //           border: OutlineInputBorder(
-                    //               borderSide:
-                    //                   BorderSide(color: black.withOpacity(.7)),
-                    //               borderRadius:
-                    //                   BorderRadius.circular(Dimensions.radius15)))),
-                    // ),
-                    // SizedBox(
-                    //   height: Dimensions.height20,
-                    // ),
+                    SizedBox(
+                      width: Dimensions.height50*5,
+                      height: Dimensions.height45,
+                      child: TextFormField(controller: passCon,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                              hintText: 'كلمة المرور..',
+                              hintStyle: TextStyle(
+                                  fontFamily: 'Cairo',
+                                  fontSize: 13,
+                                  color: black.withOpacity(.5)),
+                              focusColor: blueush,
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: Dimensions.height30,
+                                  vertical: Dimensions.height10),
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: blueush),
+                                  borderRadius:
+                                      BorderRadius.circular(Dimensions.radius15)),
+                              border: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: black.withOpacity(.7)),
+                                  borderRadius:
+                                      BorderRadius.circular(Dimensions.radius15)))),
+                    ),
+                    SizedBox(
+                      height: Dimensions.height20,
+                    ),
                     InkWell(
                       onTap: () {
-                        controller.loginWithPhoneNumber(phoneCon.phoneNumber!);
+                        controller.loginWithPhoneNumber(phoneCon.phoneNumber!,passCon.text);
                       },
                       child: Container(
                         height: Dimensions.height45,
@@ -173,7 +175,9 @@ class loginPage extends StatelessWidget {
                             width: Dimensions.height10,
                           ),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Get.to(()=>SignUpPage());
+                            },
                             child: Text('انشاء حساب',
                                 style: TextStyle(
                                     fontSize: 13,

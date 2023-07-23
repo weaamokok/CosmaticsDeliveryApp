@@ -20,9 +20,12 @@ class redirectUser extends StatefulWidget {
 Future<void> redirect()async{
    _loadResource();
 final SharedPreferences shared=await SharedPreferences.getInstance();
+print(shared.getString('userId'));
 shared.containsKey('userId')?{
+
   currentUser. currentUserID=shared.getString('userId'),
-  Get.to(() => HomePage())}:Get.to(()=>const HomePage());
+  
+  Get.to(() => HomePage())}:Get.to(()=>const loginPage());
 
 }
 _loadResource()async{
