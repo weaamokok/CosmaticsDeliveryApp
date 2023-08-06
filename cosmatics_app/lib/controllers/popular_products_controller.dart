@@ -23,8 +23,10 @@ class PopularProductController extends GetxController {
     Response response = await popularProductRepo.getPopularProductList();
     if (response.statusCode == 200) {
       _popularProductList = [];
+    
       response.body.forEach((v) {
         _popularProductList.add(Product.fromJson(v));
+          print('f');
       });
 
       update();

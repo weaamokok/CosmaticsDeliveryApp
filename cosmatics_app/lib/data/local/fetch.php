@@ -1,6 +1,8 @@
 <?php
 header('Content-Type: application/json');
-include ".lib\data\local\connect.php";
+
+include ".\connect.php";
+
 
 $stmt = $db->prepare("SELECT * FROM products");
 $stmt->execute();

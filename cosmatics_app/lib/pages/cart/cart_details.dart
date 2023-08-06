@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimentions.dart';
 import '../../widgets/app_icon.dart';
+import '../orderStages/infoRegistering.dart';
 
 class CartDetails extends StatelessWidget {
   const CartDetails({super.key});
@@ -246,6 +247,7 @@ Get.to(()=>HomePage());                        },
                     InkWell(
                       onTap: () {
                     controller.addToHistory();
+                    Get.to(()=>CostumerInfoRegistering());
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(
@@ -262,7 +264,7 @@ Get.to(()=>HomePage());                        },
                             borderRadius:
                                 BorderRadius.circular(Dimensions.radius20),
                             color: blueush),
-                        child: BigText(text:'الدفع ' ,color: Colors.white,size: 16,)
+                        child: BigText(text:'تأكيد الطلب ' ,color: Colors.white,size: 16,)
                       ),
                     )
                   ]),

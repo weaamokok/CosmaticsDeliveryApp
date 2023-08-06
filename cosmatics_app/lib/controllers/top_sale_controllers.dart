@@ -11,6 +11,8 @@ class TopSaleProductController extends GetxController {
 
   Future<void> getTopSaleProductList() async {
     Response response = await topSaleProductRepo.gettopSaleProductList();
+    print('${response.statusCode} code');
+
     if (response.statusCode == 200) {
       _topSaleProductList = [];
 response.body.forEach((v){_topSaleProductList.add(Product.fromJson(v));});
