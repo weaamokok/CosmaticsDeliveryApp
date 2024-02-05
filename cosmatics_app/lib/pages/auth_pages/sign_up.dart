@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 import '../../controllers/auth_controller.dart';
-
+  PhoneNumber phoneCon = PhoneNumber();
 ApiClient apiClient = ApiClient(appBaseUrl: '');
 
 class SignUpPage extends StatelessWidget {
@@ -19,7 +19,7 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    PhoneNumber phoneCon = PhoneNumber();
+  
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
@@ -59,7 +59,10 @@ class SignUpPage extends StatelessWidget {
                         height: Dimensions.height45,
                         child: Directionality(
                           textDirection: TextDirection.ltr,
-                          child: InternationalPhoneNumberInput(
+                          child: InternationalPhoneNumberInput(onFieldSubmitted: (value) {
+                      print(value);
+                          },
+
                             onSaved: (value) {
                               phoneCon = value;
                             },
@@ -86,7 +89,7 @@ class SignUpPage extends StatelessWidget {
                                         Dimensions.radius15))),
                             onInputChanged: (value) {
                               print(value);
-                              phoneCon = value;
+                             // phoneCon = value;
                             },
                           ),
                         )),
@@ -98,12 +101,13 @@ class SignUpPage extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: ()async {
-                        print(await controller.checkIfExists(phoneCon.phoneNumber!).toString());
                         if (await controller.checkIfExists(phoneCon.phoneNumber!) ==
                             "registered") {
                           controller.showError('هذا الحساب مسجل مسبقاً');
                         } else {
-                           controller.signWithPhoneNumber(phoneCon.phoneNumber!);}
+                          
+                           controller.signWithPhoneNumber(phoneCon.phoneNumber!);
+                           }
                         }
                       ,
                       child: Container(

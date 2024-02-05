@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cosmatics_app/utils/dimentions.dart';
 import 'package:flutter/material.dart';
 
@@ -41,7 +42,6 @@ class BrandsPage extends StatelessWidget {
                           size: Dimensions.iconSize24,
                         ),
                         onPressed: () {
-
                           Navigator.pop(context);
                         },
                       ),
@@ -52,25 +52,33 @@ class BrandsPage extends StatelessWidget {
                   ),
                   Expanded(
                     flex: 5,
-                    child: SizedBox(height: Dimensions.height50,
+                    child: SizedBox(
+                      height: Dimensions.height50,
                       child: TextFormField(
                         textDirection: TextDirection.rtl,
                         controller: cont,
                         keyboardType: TextInputType.text,
                         onChanged: (String query) {},
                         textAlign: TextAlign.right,
-                        decoration: InputDecoration(hintStyle:TextStyle(color: black.withOpacity(.4), fontSize: 13, fontFamily: 'Cairo',),
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(
+                            color: black.withOpacity(.4),
+                            fontSize: 13,
+                            fontFamily: 'Cairo',
+                          ),
                           hintText:
                               '${listOfProducts.first.brand.toString()} ابحث في منتجات  ',
                           prefixIcon: const Icon(Icons.search),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20.0)),
                             borderSide: BorderSide(
                               color: black.withOpacity(.2),
                             ),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20.0)),
                             borderSide: BorderSide(color: blueush),
                           ),
                         ),
@@ -80,10 +88,14 @@ class BrandsPage extends StatelessWidget {
                 ],
               ),
             ),
-          ),   SectionHeader(
-            hintText: " من  ${listOfProducts.first.brand.toString()}", mainText: ' منتجات مميزة '),
+          ),
+          SectionHeader(
+              hintText: " من  ${listOfProducts.first.brand.toString()}",
+              mainText: ' منتجات مميزة '),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: Dimensions.width20,),
+            padding: EdgeInsets.symmetric(
+              horizontal: Dimensions.width20,
+            ),
             child: Directionality(
               textDirection: TextDirection.rtl,
               child: GridView.builder(
@@ -119,10 +131,12 @@ class BrandsPage extends StatelessWidget {
                               children: [
                                 Expanded(
                                   flex: 2,
-                                  child: Image.network(
-                                    listOfProducts[index].imageLink.toString(),
+                                  child: CachedNetworkImage(
+                                    imageUrl: listOfProducts[index]
+                                        .imageLink
+                                        .toString(),
                                     fit: BoxFit.cover,
-                                    errorBuilder: (context, error, stackTrace) {
+                                    errorWidget: (context, error, stackTrace) {
                                       return Image.asset(
                                           'assets/image/error.png');
                                     },
@@ -158,16 +172,19 @@ class BrandsPage extends StatelessWidget {
                                             flex: 4,
                                             child: Container(
                                               margin: EdgeInsets.symmetric(
-                                                  horizontal: Dimensions.width10),
+                                                  horizontal:
+                                                      Dimensions.width10),
                                               child: BigText(
                                                 text:
-                                                    '${listOfProducts[index].price}' 'د.ل',
+                                                    '${listOfProducts[index].price}'
+                                                    'د.ل',
                                                 size: 13,
                                                 wieght: FontWeight.w600,
                                                 color: black.withOpacity(.7),
                                               ),
                                             ),
-                                          ),       Expanded(
+                                          ),
+                                          Expanded(
                                               flex: 2,
                                               child: Row(
                                                 crossAxisAlignment:
@@ -183,12 +200,13 @@ class BrandsPage extends StatelessWidget {
                                                     width: Dimensions.width10,
                                                   ),
                                                   Text(
-                                              listOfProducts[
-                                                            index]
-                                                        .rating==null?'0.0':
-                                                          listOfProducts[
-                                                            index]
-                                                        .rating.toString(),
+                                                    listOfProducts[index]
+                                                                .rating ==
+                                                            null
+                                                        ? '0.0'
+                                                        : listOfProducts[index]
+                                                            .rating
+                                                            .toString(),
                                                     style: TextStyle(
                                                         fontSize: 13,
                                                         color: black

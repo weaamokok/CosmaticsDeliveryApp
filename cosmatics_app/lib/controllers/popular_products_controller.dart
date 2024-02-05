@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 
 import '../domain/models/cart.dart';
 
-
 class PopularProductController extends GetxController {
   final PopularProductRepo popularProductRepo;
   PopularProductController({required this.popularProductRepo});
@@ -20,13 +19,16 @@ class PopularProductController extends GetxController {
   int get inCartItems => _inCartItems + quantity;
 
   Future<void> getPopularProductList() async {
+    print('------> PopularProductController');
+
     Response response = await popularProductRepo.getPopularProductList();
     if (response.statusCode == 200) {
+      print(response.body);
       _popularProductList = [];
-    
+
       response.body.forEach((v) {
         _popularProductList.add(Product.fromJson(v));
-          print('f');
+        print('f');
       });
 
       update();
@@ -71,25 +73,23 @@ class PopularProductController extends GetxController {
   void addItem(Product product) {
     if (quantity > 0) {
       _cart.addItem(product, quantity);
-      quantity=0;//so it doesn't mess the quantity in overall
-     
+      quantity = 0; //so it doesn't mess the quantity in overall
     } else {
-
-  
       Get.snackbar('الكمية المضافة', 'يجب إضافة صنف على الاقل',
           backgroundColor: blueush,
           colorText: Colors.white,
           animationDuration: const Duration(milliseconds: 50),
           isDismissible: true,
           duration: const Duration(milliseconds: 800));
-
     }
     update();
   }
-int get totalItems{
-  return _cart.totalItems;
-}
-List<Cart> get getCartItems{
-  return _cart.getCartItems;
-}
+
+  int get totalItems {
+    return _cart.totalItems;
+  }
+
+  List<Cart> get getCartItems {
+    return _cart.getCartItems;
+  }
 }

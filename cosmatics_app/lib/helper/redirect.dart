@@ -1,4 +1,3 @@
-
 import 'package:cosmatics_app/helper/curent_user.dart';
 import 'package:cosmatics_app/pages/auth_pages/login_page.dart';
 import 'package:cosmatics_app/pages/home/home_page.dart';
@@ -17,38 +16,37 @@ class redirectUser extends StatefulWidget {
   @override
   State<redirectUser> createState() => _redirectUserState();
 }
-Future<void> redirect()async{
-   _loadResource();
-final SharedPreferences shared=await SharedPreferences.getInstance();
-print(shared.getString('userId'));
-shared.containsKey('userId')?{
 
-  currentUser. currentUserID=shared.getString('userId'),
-  
-  Get.to(() => HomePage())}:Get.to(()=>const loginPage());
-
-}
-_loadResource()async{
-  await  Get.find<BrandsController>().getBrands();
-   await Get.find<TopSaleProductController>().getTopSaleProductList();
-  await  Get.find<PopularProductController>().getPopularProductList();
-    Get.find<PopularProductController>()
-        .initProduct(Get.find<CartController>());
-
+Future<void> redirect() async {
+  _loadResource();
+  final SharedPreferences shared = await SharedPreferences.getInstance();
+  print(shared.getString('userId'));
+  shared.containsKey('userId')
+      ? {
+          currentUser.currentUserID = shared.getString('userId'),
+          //todo changed login to home for testing
+          Get.to(() => HomePage())
+        }
+      : Get.to(() => const HomePage());
 }
 
+_loadResource() async {
+  await Get.find<BrandsController>().getBrands();
+  await Get.find<TopSaleProductController>().getTopSaleProductList();
+  await Get.find<PopularProductController>().getPopularProductList();
+  Get.find<PopularProductController>().initProduct(Get.find<CartController>());
+}
 
 class _redirectUserState extends State<redirectUser> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-   
-    redirect();
 
+    redirect();
   }
+
   @override
   Widget build(BuildContext context) {
-    return CircularProgressIndicator();
+    return const CircularProgressIndicator();
   }
 }

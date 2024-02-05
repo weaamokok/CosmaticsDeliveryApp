@@ -1,13 +1,9 @@
 import 'dart:convert';
-
 import 'package:cosmatics_app/helper/curent_user.dart';
-import 'package:cosmatics_app/utils/constant.dart';
-import 'package:cosmatics_app/utils/endPionts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../pages/auth_pages/otp_verification_screen.dart';
 import '../../pages/home/home_page.dart';
 import '../../utils/colors.dart';
@@ -21,24 +17,25 @@ class ApiClient extends GetConnect implements GetxService {
   ApiClient({required this.appBaseUrl}) {
     baseUrl = appBaseUrl; //has to do with getx package managment
     timeout = const Duration(seconds: 30);
-    token = AppConstants.TOKEN; //will wait 30 se for data to get
+    // token = AppConstants.TOKEN; //will wait 30 se for data to get
     _mainHeaders = {
       //headers are important to communicate with the server the same info are sent everytime so we make this line
-         "Content-Type": "application/x-www-form-urlencoded",
-
+      "Content-Type": "application/json",
     };
   }
 //insted of http respons we are using getx respons
   Future<Response> getData(String uri) async {
     try {
-      Response response = await get(uri);
+      Response response = await get(uri, headers: _mainHeaders);
       print(response.body);
       return response;
     } catch (e) {
+      print('error in get data');
       print(e);
       return Response(statusCode: 1, statusText: e.toString());
     }
   } //Auth with phone number
+
 //sign up
   SignupWithphoneNumber(String phoneNum) async {
     final SharedPreferences shared = await SharedPreferences.getInstance();
@@ -66,7 +63,8 @@ class ApiClient extends GetConnect implements GetxService {
               animationDuration: const Duration(milliseconds: 50),
               isDismissible: true,
               duration: const Duration(milliseconds: 1500));
-        }  if (e.code == 'invalid-phone-number') {
+        }
+        if (e.code == 'invalid-phone-number') {
           Get.snackbar(
               '   رقم الهاتف غير صحيح', "تأكد من رقم الهاتف واعد المحاولة ",
               backgroundColor: blueush,
@@ -85,11 +83,9 @@ class ApiClient extends GetConnect implements GetxService {
   }
 
   //Auth with phone number
-  LoginWithphoneNumber(String phoneNum,String pass) async {
+  LoginWithphoneNumber(String phoneNum, String pass) async {
     final SharedPreferences shared = await SharedPreferences.getInstance();
     final auth = FirebaseAuth.instance;
-
-
 
     // await FirebaseAuth.instance.verifyPhoneNumber(
     //   phoneNumber: phoneNum,
@@ -142,27 +138,24 @@ class ApiClient extends GetConnect implements GetxService {
         .whenComplete(() => Get.to(() => const HomePage()));
   }
 
- Future<String> checkIfPhoneExists(String phone)async {
-
-     
-      var message='';
+  Future<String> checkIfPhoneExists(String phone) async {
+    var message = '';
     try {
       Map<String, dynamic> body = {
         'phone': phone,
       };
-     // print(phone);
+      // print(phone);
       Response response = await post(
           'https://cosmoapp.000webhostapp.com/isRegistered.php', body,
-          contentType:
-              'application/x-www-form-urlencoded',headers: _mainHeaders //هذا نوع البيانات الي مفروض نبعتوه باش يتعرف عليه الريكويست
+          contentType: 'application/x-www-form-urlencoded',
+          headers:
+              _mainHeaders //هذا نوع البيانات الي مفروض نبعتوه باش يتعرف عليه الريكويست
           );
-          if(response.statusCode==200)
-       message = jsonDecode(response.body);
-print(message);
+      if (response.statusCode == 200) message = jsonDecode(response.body);
+      print(message);
       return message;
     } catch (e) {
-   
-      return  e.toString();
+      return e.toString();
     }
   }
 }
